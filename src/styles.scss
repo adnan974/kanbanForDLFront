@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "./color--shade.scss";
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  margin: 0; 
+  font-family: "Nunito", sans-serif;
+  color: $fullShade;
+}

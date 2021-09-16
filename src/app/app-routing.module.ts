@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/kanban/kanban.module').then(m => m.KanbanModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule, MatIconModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
