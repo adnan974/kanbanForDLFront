@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import '../../../../../color--shade.scss';
+
+:host {
+  display: flex;
+  height: 80px;
+  width: calc(100vw - 80px);
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #efefef;
+}
+
+.title {
+  color: $fullShade;
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  padding-left: 20px;
+}
+
+.title p {
+  margin: 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.dot_separator {
+  border-radius: 9999px;
+  width: 8px;
+  height: 8px;
+  background-color: $fullShade;
+  margin: 0 8px 0 8px;
+}
+
+.instance_name {
+  font-weight: 300;
+}
+
+.auth_block {
+  display: flex;
+  align-items: center;
+  border-left: solid 1px #efefef;
+  height: 100%;
+  padding: 0 10px 0 10px;
+}
+
+.account_block {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  background-color: $accentLight;
+  color: $accent;
+  font-weight: 600;
+  border-radius: 9999px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification_icon {
+  color: $mediumShade;
+  margin: 0 20px;
+}

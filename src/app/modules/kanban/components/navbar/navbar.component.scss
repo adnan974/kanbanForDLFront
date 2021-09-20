@@ -1,8 +1,8 @@
-@import '../../../color--shade.scss';
+@import '../../../../../color--shade.scss';
 
 :host {
   width: 80px;
-  height: 100%;
+  height: 100vh;
   background-color: $primary;
   display: flex;
   flex-direction: column;

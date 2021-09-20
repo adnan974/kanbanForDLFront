@@ -1,0 +1,60 @@
+@import '../../../../../color--shade.scss';
+
+:host {
+  padding: 30px;
+  background-color: $background;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(100vh - 81px);
+}
+
+h2 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.board_status {
+  display: flex;
+  color: $darkShade;
+  align-items: center;
+}
+
+.dashboard_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dot_separator {
+  border-radius: 9999px;
+  width: 8px;
+  height: 8px;
+  background-color: $darkShade;
+  margin: 0 8px 0 8px;
+}
+
+.header_menu {
+  background-color: $lightShade;
+  color: $darkShade;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.dashboard_components {
+  display: flex;
+  gap: 12px;
+}
+
+.ticketCard {
+  width: 100px;
+  height: 50px;
+  background-color: chartreuse;
+  margin: 5px;
+}
