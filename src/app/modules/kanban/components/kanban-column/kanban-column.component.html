@@ -1,6 +1,10 @@
-{{ columnName }}
-<div cdkDropList (cdkDropListDropped)="onDrop($event)">
-  <div cdkDrag *ngFor="let ticket of tickets" class="ticketCard">
-    {{ ticket }}
+<div class="column_header">
+  <div class="column_name">{{ columnName | uppercase }}</div>
+  <button class="add_item_btn"><mat-icon>add</mat-icon></button>
+</div>
+
+<div class="drop_list" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">
+  <div class="drop_item" cdkDrag *ngFor="let ticket of tickets" class="ticketCard">
+    <app-ticket></app-ticket>
   </div>
 </div>

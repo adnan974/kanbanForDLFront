@@ -1,0 +1,14 @@
+@import '../../../../../color--shade.scss';
+
+:host {
+  background-color: $emptyShade;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

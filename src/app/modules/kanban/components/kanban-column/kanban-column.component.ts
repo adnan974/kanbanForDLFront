@@ -21,7 +21,7 @@ export class KanbanColumnComponent implements OnInit {
   onDrop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
-        this.tickets,
+        event.container.data,
         event.previousIndex,
         event.currentIndex);
     } else {

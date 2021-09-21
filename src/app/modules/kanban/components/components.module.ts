@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NavbarComponent,
     KanbanColumnComponent,
     DashboardComponent,
+    TicketComponent,
   ],
   imports: [
     CommonModule,
