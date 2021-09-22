@@ -1,1 +1,33 @@
-<p>register works!</p>
+
+<div class="register-container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">KanBan For Daily Life: Sign Up</h5>
+            <form>
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input type="email" class="form-control" id="firstname" aria-describedby="emailHelp"
+                        placeholder="Enter firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="email" class="form-control" id="lasrname" aria-describedby="emailHelp"
+                        placeholder="Enter lastname">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div>
+                    <a [routerLink]="['/auth/login']">Login</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
