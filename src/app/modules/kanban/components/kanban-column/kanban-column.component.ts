@@ -13,6 +13,7 @@ export class KanbanColumnComponent implements OnInit {
 
   constructor() { 
     this.tickets = ["a", "b", "c"];
+    // this.tickets = ["a"]
   }
 
   ngOnInit(): void {

@@ -3,7 +3,8 @@
 :host {
   padding: 30px;
   background-color: $background;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
   height: calc(100vh - 81px);
@@ -49,16 +50,8 @@ p {
 
 .dashboard_components {
   display: flex;
+  overflow: hidden;
   gap: 12px;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.ticketCard {
-  width: 100px;
-  height: 50px;
-  background-color: chartreuse;
-  margin: 5px;
 }
 
 .spacer {
