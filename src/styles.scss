@@ -13,3 +13,5 @@ body {
   font-family: "Nunito", sans-serif;
   color: $fullShade;
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
