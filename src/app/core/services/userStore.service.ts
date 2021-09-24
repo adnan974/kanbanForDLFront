@@ -8,6 +8,7 @@ export class UserService {
 
   public email!:string;
   public userId!:string;
+  public isLogged:Boolean = false;
 
   constructor() {
     const payload: any = this.getTokenPayload();
