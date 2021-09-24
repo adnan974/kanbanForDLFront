@@ -34,12 +34,18 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
 
           localStorage.setItem('jwt', res.token);
+
+          console.log(localStorage.getItem('jwt'))
+
           this.router.navigate(['']);
+
+          this.userStoreService.storePayloadInfos();
 
           //Todo : a modifier, faudrait-il ajouter des infos dans le payload plutot ?
           this.userStoreService.userInfos.firstName = res.message.firstName;
           this.userStoreService.userInfos.lastName = res.message.lastName;
 
+          
           this.userStoreService.isLogged = true;
 
         }, error => {

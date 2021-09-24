@@ -11,6 +11,18 @@ export class UserStoreService {
   public isLogged:Boolean = false;
 
   constructor() {
+    
+    this.storePayloadInfos();
+
+  }
+
+
+  getTokenPayload(): Object {
+    let token = localStorage.getItem('jwt') || '';
+    return jwt_decode(token);
+  }
+
+  storePayloadInfos(){
     const payload: any = this.getTokenPayload();
 
     this.userInfos = {
@@ -22,14 +34,6 @@ export class UserStoreService {
       lastName:payload.lastName,
       avatar:""
     }
-    
-
-  }
-
-
-  getTokenPayload(): Object {
-    let token = localStorage.getItem('jwt') || '';
-    return jwt_decode(token);
   }
 
 }
