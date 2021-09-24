@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserStoreService } from 'src/app/core/services/userStore.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userStoreService: UserStoreService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
 
           localStorage.setItem('jwt', res.token);
           this.router.navigate(['']);
+          this.userStoreService.isLogged = true;
 
         }, error => {
           this.formIsInvalidAfterSubmit = true;

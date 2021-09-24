@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserStoreService {
 
   public email!:string;
   public userId!:string;
