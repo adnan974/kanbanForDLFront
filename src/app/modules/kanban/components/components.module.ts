@@ -8,6 +8,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TicketComponent } from './ticket/ticket.component';
+import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TicketComponent } from './ticket/ticket.component';
     KanbanColumnComponent,
     DashboardComponent,
     TicketComponent,
+    EditTicketModalComponent,
   ],
   imports: [
     CommonModule,

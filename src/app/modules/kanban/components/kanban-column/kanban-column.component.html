@@ -1,6 +1,6 @@
 <div class="column_header">
   <div class="column_name">{{ columnName | uppercase }}</div>
-  <button class="add_item_btn"><mat-icon>add</mat-icon></button>
+  <app-edit-ticket-modal></app-edit-ticket-modal>
 </div>
 
 <div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">

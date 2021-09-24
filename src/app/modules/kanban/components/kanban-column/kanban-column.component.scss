@@ -17,19 +17,6 @@
   font-weight: 800;
 }
 
-.add_item_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $lightBlue;
-  border: none;
-  color: $darkBlue;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
 .drop_list {
   padding: 10px 0;
   display: flex;
@@ -39,10 +26,20 @@
   overflow-y: scroll;
 }
 
-.personnalised_scrollbar {
-  scrollbar-width: thin;
-}
-
 .drop_item {
   width: 100%;
+}
+
+.drop_list::-webkit-scrollbar {
+  width: 12px;
+}
+
+.drop_list::-webkit-scrollbar-track {
+  background: $background; /* color of the tracking area */
+}
+
+.drop_list::-webkit-scrollbar-thumb {
+  background-color: $lightShade; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid $background; /* creates padding around scroll thumb */
 }
