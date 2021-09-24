@@ -17,7 +17,6 @@
   <div class="spacer"></div>
   
   <div class="dashboard_components" cdkDropListGroup>
-    <app-kanban-column [columnName]="'Todo'" [ticketsData]="ticketsData.todoStatus"></app-kanban-column>
-    <app-kanban-column [columnName]="'In Progress'" [ticketsData]="ticketsData.inProgressStatus"></app-kanban-column>
+    <app-kanban-column *ngFor="let column of ticketList | keyvalue" [columnName]="column.key"></app-kanban-column>
   </div>
 </div>
