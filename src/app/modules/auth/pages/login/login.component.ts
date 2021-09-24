@@ -10,6 +10,9 @@ import { UserStoreService } from 'src/app/core/services/userStore.service';
 })
 export class LoginComponent implements OnInit {
 
+  public emailValue:string="test2@test.com";
+  public passwordValue:string="test";
+
   public formIsInvalidAfterSubmit = false
 
   constructor(
@@ -32,6 +35,11 @@ export class LoginComponent implements OnInit {
 
           localStorage.setItem('jwt', res.token);
           this.router.navigate(['']);
+
+          //Todo : a modifier, faudrait-il ajouter des infos dans le payload plutot ?
+          this.userStoreService.userInfos.firstName = res.message.firstName;
+          this.userStoreService.userInfos.lastName = res.message.lastName;
+
           this.userStoreService.isLogged = true;
 
         }, error => {

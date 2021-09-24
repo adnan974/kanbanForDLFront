@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TicketService } from './services/ticket.service';
 
 
 
@@ -11,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers:[AuthService],
+  providers:[AuthService,TicketService],
   exports:[]
 })
 export class CoreModule { }

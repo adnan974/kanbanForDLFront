@@ -8,8 +8,8 @@
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ngModel
-                        aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <input type="email" class="form-control" name="email" id="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="emailValue"
+                        aria-describedby="emailHelp" placeholder="Enter email"  required>
                     <small class="text-danger" [class.d-none]="email.valid || email.untouched">invalid email</small>
 
 
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" #password="ngModel" name="password" id="password"
-                        ngModel placeholder="Password" required>
+                        [(ngModel)]="passwordValue" placeholder="Password" required>
                     <small class="text-danger" [class.d-none]="password.valid || password.untouched">password
                         required</small>
 
