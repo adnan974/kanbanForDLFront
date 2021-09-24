@@ -12,8 +12,6 @@ export class UserStoreService {
 
   constructor() {
     
-    this.storePayloadInfos();
-
   }
 
 
@@ -24,6 +22,7 @@ export class UserStoreService {
 
   storePayloadInfos(){
     const payload: any = this.getTokenPayload();
+
 
     this.userInfos = {
       id:payload.userId,

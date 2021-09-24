@@ -35,8 +35,6 @@ export class LoginComponent implements OnInit {
 
           localStorage.setItem('jwt', res.token);
 
-          console.log(localStorage.getItem('jwt'))
-
           this.router.navigate(['']);
 
           this.userStoreService.storePayloadInfos();
@@ -45,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.userStoreService.userInfos.firstName = res.message.firstName;
           this.userStoreService.userInfos.lastName = res.message.lastName;
 
-          
+
           this.userStoreService.isLogged = true;
 
         }, error => {
