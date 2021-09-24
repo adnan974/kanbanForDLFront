@@ -14,14 +14,12 @@ export class KanbanColumnComponent implements OnInit {
   tickets: string[];
 
   constructor(
-    private ticketService:TicketService
   ) { 
     this.tickets = ["a", "b", "c"];
     // this.tickets = ["a"]
   }
 
   ngOnInit(): void {
-    console.log(this.ticketsData)
     
   }
 

@@ -9,6 +9,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,9 @@ import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.
   imports: [
     CommonModule,
     MatIconModule,
-    DragDropModule
-  ],
+    DragDropModule,
+    CoreModule
+    ],
   exports: [
     SettingsComponent,
     SearchBarComponent,
