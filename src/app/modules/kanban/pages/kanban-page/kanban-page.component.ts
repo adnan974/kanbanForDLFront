@@ -10,6 +10,7 @@ export class KanbanPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

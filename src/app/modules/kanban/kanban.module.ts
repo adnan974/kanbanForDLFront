@@ -4,6 +4,7 @@ import { KanbanPageComponent } from './pages/kanban-page/kanban-page.component';
 import { KanbanRoutingModule } from './kanban-routing.module';
 import { PageLayoutComponent } from './pages/page-layout/page-layout.component';
 import { ComponentsModule } from './components/components.module';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
     CommonModule,
     KanbanRoutingModule,
     ComponentsModule,
+    CoreModule
   ]
 })
 
