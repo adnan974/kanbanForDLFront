@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserStoreService } from 'src/app/core/services/userStore.service';
@@ -8,10 +8,10 @@ import { UserStoreService } from 'src/app/core/services/userStore.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  public emailValue:string="test2@test.com";
-  public passwordValue:string="test";
+  public emailValue: string="test2@test.com";
+  public passwordValue: string="test";
 
   public formIsInvalidAfterSubmit = false
 
@@ -21,11 +21,8 @@ export class LoginComponent implements OnInit {
     private userStoreService: UserStoreService
   ) { }
 
-  ngOnInit(): void {
-  }
-
   onSubmit(formData: any) {
-
+    console.log(formData);
     if (formData.form.valid) {
 
       this.formIsInvalidAfterSubmit = false;

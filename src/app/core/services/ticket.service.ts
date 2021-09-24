@@ -7,14 +7,15 @@ import { UserStoreService } from './userStore.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TicketService {
 
   constructor(
-    private http:HttpClient,
-    private userStoreService:UserStoreService
-    ) { }
+    private http: HttpClient,
+    private userStoreService: UserStoreService
+  ) { }
 
-  getUserTickets():Observable<any>{
-    return this.http.get(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`)
+  getUserTickets(): Observable<any>{
+    return this.http.get(`${environment.BASE_URL}/tickets/${this.userStoreService.userInfos.id}`)
   }
 }

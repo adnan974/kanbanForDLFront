@@ -5,33 +5,27 @@ import { User } from 'src/app/shared/models/user.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserStoreService {
+  public userInfos: User = new User();
+  public isLogged: boolean = false;
 
-  public userInfos:User= new User();
-  public isLogged:Boolean = false;
+  constructor() { }
 
-  constructor() {
-    
+  getTokenPayload(): any {
+    return jwt_decode(localStorage.getItem('jwt') || '');
   }
 
-
-  getTokenPayload(): Object {
-    let token = localStorage.getItem('jwt') || '';
-    return jwt_decode(token);
-  }
-
-  storePayloadInfos(){
+  storePayloadInfos(): void {
     const payload: any = this.getTokenPayload();
 
-
     this.userInfos = {
-      id:payload.userId,
-      email:payload.email,
+      id: payload.userId,
+      email :payload.email,
 
-      //TODO: ajouter ces infos dans le payload ? de base ils ne le sont pas
-      firstName:payload.firstName,
-      lastName:payload.lastName,
-      avatar:""
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      avatar: payload.avater
     }
   }
 
