@@ -65,6 +65,15 @@
 }
 
 .notification_icon {
+  cursor: pointer;
   color: $mediumShade;
   margin: 0 20px;
+}
+
+.notification_icon > mat-icon:active {
+  color: black;
+}
+
+.notification_icon > mat-icon:after {
+  display:none;
 }

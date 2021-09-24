@@ -9,11 +9,26 @@
 </div>
 
 <div class="auth_block">
-  <div class="notification_icon">
-    <mat-icon>notifications_active</mat-icon>
+  <div ngbDropdown class="notification_icon">
+    <mat-icon ngbDropdownToggle>notifications_active</mat-icon>
+    <div ngbDropdownMenu >
+      <div  ngbDropdownItem >
+        <div *ngFor="let notif of notificationsInfos" >
+          <div>
+            {{notif.title}}
+          </div>
+          <div>
+            {{notif.description}}
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
   <div class="account_block">
     <div class="avatar">A</div>
     <mat-icon class="account_arrow">keyboard_arrow_down</mat-icon>
+    
   </div>
 </div>
+

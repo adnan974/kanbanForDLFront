@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TicketService } from './services/ticket.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationService } from './services/notification.service';
 
 
 
@@ -10,9 +12,10 @@ import { TicketService } from './services/ticket.service';
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers:[AuthService,TicketService],
-  exports:[]
+  providers:[AuthService,TicketService,NotificationService],
+  exports:[NgbModule]
 })
 export class CoreModule { }
