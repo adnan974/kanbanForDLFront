@@ -1,0 +1,14 @@
+@import '../../../../../color--shade.scss';
+
+.add_item_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $lightBlue;
+  border: none;
+  color: $darkBlue;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 5px;
+}
