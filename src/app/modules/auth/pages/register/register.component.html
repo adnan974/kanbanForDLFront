@@ -1,32 +1,42 @@
-
 <div class="register-container">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">KanBan For Daily Life: Sign Up</h5>
-            <form>
+            <form #formData="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="firstname">Firstname</label>
-                    <input type="email" class="form-control" id="firstname" aria-describedby="emailHelp"
-                        placeholder="Enter firstname">
+                    <input type="email" class="form-control" name="firstname" aria-describedby="emailHelp"
+                        placeholder="Enter firstname" #firstname="ngModel" [(ngModel)]="registerData.firstName" required>
+                    <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched">invalid
+                        firstname</small>
+
                 </div>
                 <div class="form-group">
                     <label for="lastname">Lastname</label>
-                    <input type="email" class="form-control" id="lasrname" aria-describedby="emailHelp"
-                        placeholder="Enter lastname">
+                    <input type="email" class="form-control" name="lasrname" aria-describedby="emailHelp"
+                        placeholder="Enter lastname" #lastname="ngModel" [(ngModel)]="registerData.lastName"  required>
+                    <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">invalid
+                        lastname</small>
+
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                        placeholder="Enter email">
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                        placeholder="Enter email" #email="ngModel" [(ngModel)]="registerData.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    <small class="text-danger" [class.d-none]="email.valid || email.untouched">invalid
+                        email</small>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Password"
+                        #password="ngModel" [(ngModel)]="registerData.password"  required>
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">invalid
+                        password</small>
                 </div>
                 <div>
                     <a [routerLink]="['/auth/login']">Login</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button [disabled]="formData.form.invalid" type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
     </div>
