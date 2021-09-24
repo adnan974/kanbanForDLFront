@@ -10,6 +10,7 @@ import { TicketService } from 'src/app/core/services/ticket.service';
 export class KanbanColumnComponent implements OnInit {
 
   @Input() columnName: string = '';
+  @Input() ticketsData:any;
   tickets: string[];
 
   constructor(
@@ -20,6 +21,7 @@ export class KanbanColumnComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.ticketsData)
     
   }
 

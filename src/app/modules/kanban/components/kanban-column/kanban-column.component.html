@@ -4,7 +4,7 @@
 </div>
 
 <div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">
-  <div class="drop_item" cdkDrag *ngFor="let ticket of tickets">
-    <app-ticket></app-ticket>
+  <div class="drop_item" cdkDrag *ngFor="let ticket of ticketsData">
+    <app-ticket [ticketData]="ticket"></app-ticket>
   </div>
 </div>
