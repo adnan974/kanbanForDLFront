@@ -25,10 +25,8 @@ export class SearchBarComponent implements OnInit {
     this.notificationService.getUserNotifications()
     .subscribe((notifs:any)=>{
 
-      console.log(notifs)
       this.notificationsInfos = notifs.notifications
 
-      console.log(this.notificationsInfos)
     })
   }
 

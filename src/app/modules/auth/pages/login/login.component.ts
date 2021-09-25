@@ -22,7 +22,6 @@ export class LoginComponent {
   ) { }
 
   onSubmit(formData: any) {
-    console.log(formData);
     if (formData.form.valid) {
 
       this.formIsInvalidAfterSubmit = false;

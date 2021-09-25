@@ -1,4 +1,4 @@
-<div *ngIf="isLoading">
+<div *ngIf="!isLoading">
   <div class="dashboard_header">
     <div class="title_header">
       <h2>Kanban dashboard</h2>
@@ -17,6 +17,6 @@
   <div class="spacer"></div>
   
   <div class="dashboard_components" cdkDropListGroup>
-    <app-kanban-column *ngFor="let column of ticketList | keyvalue" [columnName]="column.key"></app-kanban-column>
+    <app-kanban-column *ngFor="let column of ticketList | keyvalue" [columnName]="column.key" [ticketsData]="ticketList[column.key]"></app-kanban-column>
   </div>
 </div>

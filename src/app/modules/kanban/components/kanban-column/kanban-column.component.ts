@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TicketService } from 'src/app/core/services/ticket.service';
+import { Ticket } from 'src/app/shared/models/ticket.model';
 
 @Component({
   selector: 'app-kanban-column',
@@ -10,7 +11,7 @@ import { TicketService } from 'src/app/core/services/ticket.service';
 export class KanbanColumnComponent implements OnInit {
 
   @Input() columnName: string = '';
-  @Input() ticketsData:any;
+  @Input() ticketsData!:Ticket[];
   tickets: string[];
 
   constructor(
