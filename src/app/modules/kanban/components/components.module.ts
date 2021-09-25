@@ -11,9 +11,10 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatDividerModule} from '@angular/material/divider'; 
+import { MatDividerModule } from '@angular/material/divider'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CreateColumnModalComponent } from './create-column-modal/create-column-
     TicketComponent,
     EditTicketModalComponent,
     CreateColumnModalComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,

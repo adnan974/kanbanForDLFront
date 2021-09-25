@@ -1,0 +1,31 @@
+<div ngbDropdown class="notification_icon" [autoClose]="false">
+    <mat-icon ngbDropdownToggle>notifications_active</mat-icon>
+    <div ngbDropdownMenu>
+        <div>
+
+            <div *ngIf="!notificationsInfos.length">
+                <div>Pas de notification</div>
+
+            </div>
+            <div class="notification-title">Notifications</div>
+            <div ngbDropdownItem class="notification-item" *ngFor="let notif of notificationsInfos">
+                <div class="notification-text">
+                    <div>
+                        {{notif.title}}
+                    </div>
+                    <div>
+                        {{notif.description}}
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div class="notification-action">
+
+                    <mat-icon (click)="deleteNotification(notif._id)">close</mat-icon>
+                    <mat-icon (click)="unReadNotification(notif._id)">visibility</mat-icon>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
