@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserStoreService } from './userStore.service';
+import { TicketModel } from 'src/app/shared/models/ticket.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class TicketService {
 
   getUserTickets(): Observable<any>{
     return this.http.get(`${environment.BASE_URL}/tickets/${this.userStoreService.userInfos.id}`)
+  }
+
+  createTicket(ticket: TicketModel): Observable<any> {
+    return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`, JSON.stringify(ticket))
   }
 }
