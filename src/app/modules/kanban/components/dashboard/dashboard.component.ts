@@ -23,13 +23,14 @@ export class DashboardComponent implements OnInit {
     this.ticketService.getUserTickets()
       .subscribe(tickets => {
         this.isLoading = true
-        console.log(tickets)
-        
-        for (const ticket of tickets) {
-          if (_.isEmpty(this.ticketList[ticket.ticketStatus])) {
-            this.ticketList[ticket.ticketStatus] = [];
+
+        if (!_.isEmpty(tickets.data)) {
+          for (const ticket of tickets.data) {
+            if (_.isEmpty(this.ticketList[ticket.ticketStatus])) {
+              this.ticketList[ticket.ticketStatus] = [];
+            }
+            this.ticketList[ticket.ticketStatus].push(ticket);
           }
-          this.ticketList[ticket.ticketStatus].push(ticket);
         }
       })
   }

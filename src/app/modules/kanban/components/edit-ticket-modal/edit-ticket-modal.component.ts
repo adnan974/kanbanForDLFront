@@ -1,31 +1,50 @@
-import { Component } from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
+import { TicketService } from 'src/app/core/services/ticket.service';
+import { TicketModel } from 'src/app/shared/models/ticket.model';
+import { UserStoreService } from 'src/app/core/services/userStore.service';
 
 @Component({
   selector: 'app-edit-ticket-modal',
   templateUrl: './edit-ticket-modal.component.html',
   styleUrls: ['./edit-ticket-modal.component.scss']
 })
+
 export class EditTicketModalComponent {
-  closeResult = '';
+  public editTicketForm: FormGroup = new FormGroup({
+    title: new FormControl(),
+    description: new FormControl(),
+    labels: new FormControl()
+  });
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private userStoreService: UserStoreService,
+    private ticketService: TicketService
+  ) {}
 
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  public openModal(content: any) {
+    this.modalService.open(content)
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  getTicketNumber(): number {
+    return 1;
+  }
+
+  public onSubmit(): void {
+   const ticketModel = new TicketModel(
+      this.editTicketForm.get('title')?.value,
+      this.editTicketForm.get('description')?.value,
+      ['a', 'b'],
+      this.getTicketNumber(),
+      'To Do',
+      this.userStoreService.userInfos.id,
+    );
+
+    this.ticketService.createTicket(ticketModel).subscribe(
+      () => console.log('ticket posté'),
+      (err) => console.log('error encore', err)
+    );
   }
 }
