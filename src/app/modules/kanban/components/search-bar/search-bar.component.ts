@@ -20,6 +20,7 @@ export class SearchBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.userInfos = this.userStoreService.userInfos;
 
     this.notificationService.getUserNotifications()
@@ -27,6 +28,29 @@ export class SearchBarComponent implements OnInit {
 
       this.notificationsInfos = notifs.notifications
 
+    })
+
+    console.log(this.notificationsInfos)
+  }
+
+  deleteNotification(notificationId:string){
+    
+    console.log("delete notif: "+notificationId);
+    this.notificationService.deleteNotification(notificationId)
+    .subscribe(res=>{
+
+    },err=>{
+      console.log(err);
+    })
+    
+  }
+
+  unReadNotification(notificationId:string){
+    this.notificationService.unReadNotification(notificationId)
+    .subscribe(res=>{
+
+    },err=>{
+      console.log(err);
     })
   }
 

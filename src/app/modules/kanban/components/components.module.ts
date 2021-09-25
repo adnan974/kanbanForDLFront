@@ -11,6 +11,8 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDividerModule} from '@angular/material/divider'; 
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     MatIconModule,
     DragDropModule,
-    CoreModule
+    CoreModule,
+    MatDividerModule
+    
     ],
   exports: [
     SettingsComponent,
