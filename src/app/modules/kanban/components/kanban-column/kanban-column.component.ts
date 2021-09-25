@@ -12,12 +12,11 @@ export class KanbanColumnComponent implements OnInit {
 
   @Input() columnName: string = '';
   @Input() ticketsData!:Ticket[];
-  tickets: string[];
+  public tickets:any=["a","b"];
 
   constructor(
   ) { 
-    this.tickets = ["a", "b", "c"];
-    // this.tickets = ["a"]
+    
   }
 
   ngOnInit(): void {

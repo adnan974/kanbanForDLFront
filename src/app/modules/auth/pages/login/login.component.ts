@@ -31,7 +31,7 @@ export class LoginComponent {
 
           localStorage.setItem('jwt', res.token);
 
-          this.router.navigate(['']);
+          this.router.navigate(['/home']);
 
           this.userStoreService.storePayloadInfos();
 
