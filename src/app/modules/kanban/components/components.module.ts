@@ -11,8 +11,9 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 
 
 @NgModule({
@@ -24,13 +25,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     TicketComponent,
     EditTicketModalComponent,
+    CreateColumnModalComponent,
   ],
   imports: [
     CommonModule,
     MatIconModule,
     DragDropModule,
     CoreModule,
-    FormsModule,
+    MatDividerModule,
     ReactiveFormsModule
     ],
   exports: [

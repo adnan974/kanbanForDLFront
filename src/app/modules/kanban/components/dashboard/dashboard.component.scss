@@ -46,6 +46,11 @@ p {
   align-items: center;
   padding: 5px;
   border-radius: 5px;
+  border: none;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
 
 .dashboard_components {

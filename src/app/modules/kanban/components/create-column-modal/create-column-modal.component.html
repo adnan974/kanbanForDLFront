@@ -1,0 +1,23 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create column</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="createColumn">
+      <div class="form-group">
+        <label for="title">Column title</label>
+        <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title" formControlName="title">
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit(); modal.close('Save click')">Create column</button>
+  </div>
+</ng-template>
+
+<button ngbDropdownItem (click)="openModal(content)">Add a column</button>

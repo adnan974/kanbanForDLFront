@@ -17,7 +17,7 @@ export class TicketService {
   ) { }
 
   getUserTickets(): Observable<any>{
-    return this.http.get(`${environment.BASE_URL}/tickets/${this.userStoreService.userInfos.id}`)
+    return this.http.get(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`)
   }
 
   createTicket(ticket: TicketModel): Observable<any> {

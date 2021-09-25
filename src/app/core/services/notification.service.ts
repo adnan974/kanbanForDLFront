@@ -17,4 +17,14 @@ export class NotificationService {
     return this.http.get(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/notifications`)
     
   }
+
+  deleteNotification(notificationId:string){
+    return this.http.delete(`${environment.BASE_URL}/notifications/${notificationId}`)
+  }
+
+  unReadNotification(notificationId:string){
+    return this.http.patch(`${environment.BASE_URL}/notifications/${notificationId}`,{
+      status:"Read"
+    })
+  }
 }

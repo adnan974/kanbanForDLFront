@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import * as _ from 'lodash';
+import { TicketModel } from 'src/app/shared/models/ticket.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,11 @@ import * as _ from 'lodash';
 
 export class DashboardComponent implements OnInit {
 
-  public isLoading: boolean = false
-  public ticketList: { [key: string]: any[] } = {
+  public isLoading: boolean = true
+  public ticketList: { [key: string]: TicketModel[] } = {
     'To Do': [],
-    'In Progress': [],
-    'Closed': []
+    'In Progress': []
+    // 'Closed': []
   }
   
   constructor(private ticketService: TicketService) { }
@@ -22,13 +23,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.ticketService.getUserTickets()
       .subscribe(tickets => {
-        this.isLoading = true
+        this.isLoading = false
 
-        if (!_.isEmpty(tickets.data)) {
-          for (const ticket of tickets.data) {
+        if (!_.isEmpty(tickets)) {
+          for (const ticket of tickets) {
             if (_.isEmpty(this.ticketList[ticket.ticketStatus])) {
               this.ticketList[ticket.ticketStatus] = [];
             }
+
             this.ticketList[ticket.ticketStatus].push(ticket);
           }
         }

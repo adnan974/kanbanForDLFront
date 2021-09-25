@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TicketModel } from 'src/app/shared/models/ticket.model';
 
 @Component({
   selector: 'app-ticket',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TicketComponent implements OnInit {
 
-  @Input() ticketData:any;
+  @Input() ticketData!: TicketModel;
+
   
   constructor() { }
 

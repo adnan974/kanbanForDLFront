@@ -22,7 +22,6 @@ export class LoginComponent {
   ) { }
 
   onSubmit(formData: any) {
-    console.log(formData);
     if (formData.form.valid) {
 
       this.formIsInvalidAfterSubmit = false;
@@ -32,7 +31,7 @@ export class LoginComponent {
 
           localStorage.setItem('jwt', res.token);
 
-          this.router.navigate(['']);
+          this.router.navigate(['/home']);
 
           this.userStoreService.storePayloadInfos();
 
