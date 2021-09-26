@@ -15,6 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 import { NotificationComponent } from './notification/notification.component';
+import {MatBadgeModule} from '@angular/material/badge'; 
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NotificationComponent } from './notification/notification.component';
     DragDropModule,
     CoreModule,
     MatDividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule
     ],
   exports: [
     SettingsComponent,

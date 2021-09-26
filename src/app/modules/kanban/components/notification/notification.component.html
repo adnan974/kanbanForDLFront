@@ -1,5 +1,5 @@
 <div ngbDropdown class="notification_icon" [autoClose]="false">
-    <mat-icon ngbDropdownToggle>notifications_active</mat-icon>
+    <mat-icon ngbDropdownToggle [matBadge]="numberOfUnreadNotifications">notifications_active</mat-icon>
     <div ngbDropdownMenu>
         <div>
 
