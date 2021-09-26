@@ -12,46 +12,20 @@ import { User } from 'src/app/shared/models/user.model';
 export class SearchBarComponent implements OnInit {
 
   public userInfos!:User;
-  public notificationsInfos:Notification[] = [];
 
   constructor(
     private userStoreService:UserStoreService,
-    private notificationService:NotificationService
   ) { }
 
   ngOnInit(): void {
 
     this.userInfos = this.userStoreService.userInfos;
 
-    this.notificationService.getUserNotifications()
-    .subscribe((notifs:any)=>{
+   
 
-      this.notificationsInfos = notifs.notifications
-
-    })
-
-    console.log(this.notificationsInfos)
   }
 
-  deleteNotification(notificationId:string){
     
-    console.log("delete notif: "+notificationId);
-    this.notificationService.deleteNotification(notificationId)
-    .subscribe(res=>{
-
-    },err=>{
-      console.log(err);
-    })
-    
-  }
-
-  unReadNotification(notificationId:string){
-    this.notificationService.unReadNotification(notificationId)
-    .subscribe(res=>{
-
-    },err=>{
-      console.log(err);
-    })
-  }
+   
 
 }

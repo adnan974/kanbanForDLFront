@@ -17,10 +17,20 @@
     padding-left: 24px;
   }
   
-  .notification-item{
+  .notification-item-container{
     display: flex;
     margin-bottom: 15px;
   }
+
+ .read-status-notification>.mat-divider{
+  color: lightgray;
+ }
+
+ .read-status-notification{
+   color:lightgray;
+ }
+
+
   
   .notification-item:active{
     background-color: lightgray;
@@ -29,6 +39,7 @@
   
   .notification-text{
     margin-right: 10px;
+    width: 100%;
   }
   
   .notification-text>div:first-child{

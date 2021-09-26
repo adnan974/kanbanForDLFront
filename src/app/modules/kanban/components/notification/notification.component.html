@@ -3,28 +3,32 @@
     <div ngbDropdownMenu>
         <div>
 
+           
+            <div class="notification-title">Notifications</div>
             <div *ngIf="!notificationsInfos.length">
                 <div>Pas de notification</div>
-
             </div>
-            <div class="notification-title">Notifications</div>
-            <div ngbDropdownItem class="notification-item" *ngFor="let notif of notificationsInfos">
-                <div class="notification-text">
-                    <div>
-                        {{notif.title}}
+            <div  class="notification-item" *ngFor="let notif of notificationsInfos">
+                <div ngbDropdownItem  class="notification-item-container"  [class.read-status-notification]="notif.status === 'Read'">
+                    <div class="notification-text">
+                        <div>
+                            {{notif.title}}
+                        </div>
+                        <div>
+                            {{notif.description}}
+                        </div>
                     </div>
-                    <div>
-                        {{notif.description}}
+                    <mat-divider></mat-divider>
+
+                    <div class="notification-action">
+
+                        <mat-icon (click)="deleteNotification(notif)">close</mat-icon>
+                        <mat-icon (click)="readNotification(notif)">visibility</mat-icon>
                     </div>
                 </div>
-                <mat-divider></mat-divider>
 
-                <div class="notification-action">
-
-                    <mat-icon (click)="deleteNotification(notif._id)">close</mat-icon>
-                    <mat-icon (click)="unReadNotification(notif._id)">visibility</mat-icon>
-                </div>
             </div>
+
 
         </div>
     </div>
