@@ -3,11 +3,15 @@
 </div>
 
 <div class='items'>
-    <a routerLink="/kanban-board"><mat-icon class='icon'>dashboard</mat-icon></a>
-    <a routerLink="/settings"><mat-icon class='icon'>settings</mat-icon></a>
+  <a>
+    <mat-icon [routerLink]="['/home/dashboard']" class='icon'>dashboard</mat-icon>
+  </a>
+  <a >
+    <mat-icon [routerLink]="['/home']" class='icon'>settings</mat-icon>
+  </a>
 </div>
 
 <div class="footer">
-  <mat-icon>help_outline</mat-icon>
+  <mat-icon [routerLink]="['/home/help']">help_outline</mat-icon>
   <p>FAQ</p>
 </div>
