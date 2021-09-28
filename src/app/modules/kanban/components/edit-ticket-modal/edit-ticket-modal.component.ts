@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-edit-ticket-modal',
@@ -19,7 +20,7 @@ export class EditTicketModalComponent {
 
   constructor(
     private modalService: NgbModal,
-    private ticketService: TicketService
+    private ticketService: TicketService,
   ) {}
 
   public openModal(content: any) {
@@ -33,11 +34,10 @@ export class EditTicketModalComponent {
   public onSubmit(): void {
     const ticketModel: TicketModel = new TicketModel(
       this.editTicketForm.get('title')?.value,
-      "this.getTicketNumber()",
-      ["To Do"],
+      this.getTicketNumber(),
+      "To Do",
       this.editTicketForm.get('description')?.value,
-      "",
-      ""
+      []
     )
 
     this.ticketService.createTicket(ticketModel).subscribe(

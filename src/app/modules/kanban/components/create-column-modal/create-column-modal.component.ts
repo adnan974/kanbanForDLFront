@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-create-column-modal',
@@ -13,7 +14,8 @@ export class CreateColumnModalComponent {
   });
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private columnService: ColumnService
   ) { }
 
 
@@ -23,6 +25,9 @@ export class CreateColumnModalComponent {
 
   public onSubmit() {
     const title = this.createColumn.get('title')?.value;
-    console.log(title);
+    this.columnService.postColumn({ title }).subscribe(column => {
+      this.columnService.columnList.push(title);
+      console.log('bien envoyé', column);
+    });
   }
 }
