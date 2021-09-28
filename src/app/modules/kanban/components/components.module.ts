@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-modal.component';
+import {MatBadgeModule} from '@angular/material/badge'; 
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -36,7 +38,10 @@ import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-
     DragDropModule,
     CoreModule,
     MatDividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule,
+    RouterModule
+    
     ],
   exports: [
     SettingsComponent,

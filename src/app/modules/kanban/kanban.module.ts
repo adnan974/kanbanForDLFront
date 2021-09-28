@@ -5,11 +5,15 @@ import { KanbanRoutingModule } from './kanban-routing.module';
 import { PageLayoutComponent } from './pages/page-layout/page-layout.component';
 import { ComponentsModule } from './components/components.module';
 import { CoreModule } from 'src/app/core/core.module';
+import { HelpPageComponent } from './pages/help-page/help-page.component';
+import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
     KanbanPageComponent,
-    PageLayoutComponent
+    PageLayoutComponent,
+    HelpPageComponent,
+    FaqPageComponent,
   ],
   imports: [
     CommonModule,

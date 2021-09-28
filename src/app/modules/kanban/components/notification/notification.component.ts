@@ -9,42 +9,70 @@ import { Notification } from 'src/app/shared/models/notification.model';
 })
 export class NotificationComponent implements OnInit {
 
-  @Input() notificationsInfos!:Notification[];
+  public notificationsInfos: Notification[] = [];
+  public numberOfUnreadNotifications:number = 0;
 
   constructor(
-    private notificationService:NotificationService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
 
     this.notificationService.getUserNotifications()
-    .subscribe((notifs:any)=>{
+      .subscribe((notifs: any) => {
 
-      this.notificationsInfos = notifs.notifications
+        this.notificationsInfos = notifs.notifications.filter((notif: Notification) => notif.status != "Deleted")
 
-    })
+        // On trie les notifs par odre croissant de creation
+        this.notificationsInfos = this.notificationsInfos.reverse()
 
-    console.log(this.notificationsInfos)
+        this.numberOfUnreadNotifications = this.calculNotificationWithUnreadStatus()
+
+      })
+
+
   }
 
-  deleteNotification(notificationId:string){
-    
-    console.log("delete notif: "+notificationId);
-    this.notificationService.deleteNotification(notificationId)
-    .subscribe(res=>{
+  calculNotificationWithUnreadStatus(){
+    let count:number = 0
 
-    },err=>{
-      console.log(err);
+    this.notificationsInfos.forEach(notification=>{
+      if (notification.status == "Unread") count ++;
     })
-    
+
+    return count;
   }
 
-  unReadNotification(notificationId:string){
-    this.notificationService.unReadNotification(notificationId)
-    .subscribe(res=>{
+  deleteNotification(notification: Notification) {
 
-    },err=>{
-      console.log(err);
-    })
+    const notifIndex = this.notificationsInfos.findIndex(notif => notif._id == notification._id)
+    this.notificationsInfos.splice(notifIndex,1)
+
+    this.numberOfUnreadNotifications = this.calculNotificationWithUnreadStatus()
+
+    this.notificationService.deleteNotification(notification._id)
+      .subscribe(res => {
+
+      }, err => {
+        console.log(err);
+      })
+
+  }
+
+  readNotification(notification: Notification) {
+
+    const notifIndex = this.notificationsInfos.findIndex(notif => notif._id == notification._id)
+    notification.status = "Read"
+    this.notificationsInfos[notifIndex] = notification
+
+    this.numberOfUnreadNotifications = this.calculNotificationWithUnreadStatus()
+
+    this.notificationService.unReadNotification(notification._id)
+      .subscribe(res => {
+
+
+      }, err => {
+        console.log(err);
+      })
   }
 }
