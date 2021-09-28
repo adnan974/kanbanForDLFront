@@ -9,9 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CreateColumnModalComponent {
   public createColumn: FormGroup = new FormGroup({
-    title: new FormControl(),
-    description: new FormControl(),
-    labels: new FormControl()
+    title: new FormControl()
   });
 
   constructor(

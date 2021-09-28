@@ -10,11 +10,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDividerModule } from '@angular/material/divider'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 import { NotificationComponent } from './notification/notification.component';
+import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-modal.component';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { NotificationComponent } from './notification/notification.component';
     TicketComponent,
     EditTicketModalComponent,
     CreateColumnModalComponent,
-    NotificationComponent
+    NotificationComponent,
+    DeleteColumnModalComponent
   ],
   imports: [
     CommonModule,
