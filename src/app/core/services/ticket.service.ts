@@ -10,8 +10,9 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 
 export class TicketService {
-  public dashboard: string[] = ['To Do', 'In progress', 'essai:1']; // A récupérer depuis le back
+  public dashboard: string[] = ['To Do', 'In progress', 'essai:1', 'essai:2']; // A récupérer depuis le back
   public ticketList: { name: string, tickets: any[] }[] = [];
+  public dashboardId: string = '6152bcdb074f4027d1f97791';
 
   constructor(
     private http: HttpClient,
