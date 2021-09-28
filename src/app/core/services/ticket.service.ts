@@ -10,6 +10,9 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 
 export class TicketService {
+  public dashboard: string[] = ['To Do', 'In progress', 'essai:1', 'essai:2']; // A récupérer depuis le back
+  public ticketList: { name: string, tickets: any[] }[] = [];
+  public dashboardId: string = '6152bcdb074f4027d1f97791';
 
   constructor(
     private http: HttpClient,
@@ -20,7 +23,19 @@ export class TicketService {
     return this.http.get(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`)
   }
 
+  getSpecificUserTicket(): Observable<any>{
+    return this.http.get(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`)
+  }
+
   createTicket(ticket: TicketModel): Observable<any> {
-    return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`, JSON.stringify(ticket))
+    return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`, ticket)
+  }
+
+  initTicketList(allTickets: any[]): void {
+    this.ticketList = this.dashboard.map(columnName => ({ name: columnName, tickets: [] }))
+    for (let i = 0; i < this.ticketList.length; i++) {
+      const columnTickets = allTickets.filter(ticket => ticket.ticketStatus === this.ticketList[i])
+      this.ticketList[i].tickets = columnTickets;
+    }
   }
 }

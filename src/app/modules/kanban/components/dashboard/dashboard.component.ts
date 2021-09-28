@@ -12,28 +12,14 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 export class DashboardComponent implements OnInit {
 
   public isLoading: boolean = true
-  public ticketList: { [key: string]: TicketModel[] } = {
-    'To Do': [],
-    'In Progress': []
-    // 'Closed': []
-  }
   
-  constructor(private ticketService: TicketService) { }
+  constructor(public ticketService: TicketService) { }
 
   ngOnInit(): void {
     this.ticketService.getUserTickets()
       .subscribe(tickets => {
         this.isLoading = false
-
-        if (!_.isEmpty(tickets)) {
-          for (const ticket of tickets) {
-            if (_.isEmpty(this.ticketList[ticket.ticketStatus])) {
-              this.ticketList[ticket.ticketStatus] = [];
-            }
-
-            this.ticketList[ticket.ticketStatus].push(ticket);
-          }
-        }
+        this.ticketService.initTicketList(tickets);
       })
   }
 
