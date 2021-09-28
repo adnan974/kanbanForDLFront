@@ -6,6 +6,7 @@ import { TicketService } from './services/ticket.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from './services/notification.service';
 import { ColumnService } from './services/column.service';
+import { DashboardService } from './services/dashboard.service';
 
 
 
@@ -20,7 +21,8 @@ import { ColumnService } from './services/column.service';
     AuthService,
     TicketService,
     NotificationService,
-    ColumnService
+    ColumnService,
+    DashboardService
   ],
   exports:[NgbModule]
 })

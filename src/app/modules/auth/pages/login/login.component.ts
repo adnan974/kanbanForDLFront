@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserStoreService } from 'src/app/core/services/userStore.service';
@@ -8,7 +8,7 @@ import { UserStoreService } from 'src/app/core/services/userStore.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   public emailValue: string="test2@test.com";
   public passwordValue: string="test";
@@ -21,6 +21,9 @@ export class LoginComponent {
     private userStoreService: UserStoreService
   ) { }
 
+  ngOnInit(){
+  }
+
   onSubmit(formData: any) {
     if (formData.form.valid) {
 
@@ -31,7 +34,7 @@ export class LoginComponent {
 
           localStorage.setItem('jwt', res.token);
 
-          this.router.navigate(['/home/dashboard']);
+          this.router.navigate(['/home/dashboards']);
 
           this.userStoreService.storePayloadInfos();
 

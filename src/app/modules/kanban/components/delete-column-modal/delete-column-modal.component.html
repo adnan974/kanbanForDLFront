@@ -11,11 +11,7 @@
       <div class="form-group">
         <label for="title">Columns</label>
         <select multiple class="form-control" formControlName="columnList">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option *ngFor="let column of this.columnService.columnList">{{ column.title }}</option>
         </select>
       </div>
       <div class="form-check">

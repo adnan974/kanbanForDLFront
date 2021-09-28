@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import * as _ from 'lodash';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
+import { ColumnService } from 'src/app/core/services/column.service';
+import { DashboardService } from 'src/app/core/services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,17 +12,20 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 
 export class DashboardComponent implements OnInit {
-
-  public isLoading: boolean = true
+  public isLoading: boolean = true;
   
-  constructor(public ticketService: TicketService) { }
+  constructor(
+    public ticketService: TicketService,
+    public columnService: ColumnService,
+    public dashboardService: DashboardService
+  ) { }
 
   ngOnInit(): void {
-    this.ticketService.getUserTickets()
-      .subscribe(tickets => {
-        this.isLoading = false
-        this.ticketService.initTicketList(tickets);
+    this.dashboardService.getDashboardById().subscribe(_ => {
+      this.columnService.getColumn().subscribe(_columnList => {
+        this.columnService.columnList = _columnList.result;
       })
+    })
   }
 
 }

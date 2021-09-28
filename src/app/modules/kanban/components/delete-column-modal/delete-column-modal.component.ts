@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-delete-column-modal',
@@ -14,7 +15,8 @@ export class DeleteColumnModalComponent {
   });
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public columnService: ColumnService
   ) { }
 
 
@@ -24,7 +26,12 @@ export class DeleteColumnModalComponent {
 
   public onSubmit() {
     const columnToDelete = this.deleteColumn.get('columnList')?.value;
-    console.log(columnToDelete);
+    const newField = this.columnService.columnList.find(column => column.title === columnToDelete[0]);
+
+    this.columnService.deleteColumn(newField._id).subscribe(data => {
+      console.log(data)
+      this.columnService.columnList = this.columnService.columnList.filter(column => column.title !== columnToDelete[0])
+    });
   }
 
 }
