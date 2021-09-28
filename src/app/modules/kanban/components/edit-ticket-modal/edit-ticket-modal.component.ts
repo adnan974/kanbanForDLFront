@@ -33,11 +33,10 @@ export class EditTicketModalComponent {
   public onSubmit(): void {
     const ticketModel: TicketModel = new TicketModel(
       this.editTicketForm.get('title')?.value,
-      "this.getTicketNumber()",
-      ["To Do"],
+      0,
+      "To Do",
       this.editTicketForm.get('description')?.value,
-      "",
-      ""
+      [""]
     )
 
     this.ticketService.createTicket(ticketModel).subscribe(
