@@ -7,6 +7,8 @@ import { ComponentsModule } from './components/components.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { DashboardsPageComponent } from './pages/dashboards-page/dashboards-page.component';
+import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { FaqPageComponent } from './pages/faq-page/faq-page.component';
     PageLayoutComponent,
     HelpPageComponent,
     FaqPageComponent,
+    DashboardsPageComponent,
   ],
   imports: [
     CommonModule,
     KanbanRoutingModule,
     ComponentsModule,
-    CoreModule
+    CoreModule,
+    MatCardModule
     ]
 })
 

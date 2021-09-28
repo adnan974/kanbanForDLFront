@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TicketService } from './services/ticket.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from './services/notification.service';
+import { DashboardService } from './services/dashboard.service';
 
 
 
@@ -15,7 +16,7 @@ import { NotificationService } from './services/notification.service';
     HttpClientModule,
     NgbModule
   ],
-  providers:[AuthService,TicketService,NotificationService],
+  providers:[AuthService,TicketService,NotificationService,DashboardService],
   exports:[NgbModule]
 })
 export class CoreModule { }
