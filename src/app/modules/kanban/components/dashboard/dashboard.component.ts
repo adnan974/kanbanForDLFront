@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
       this.columnService.getColumn().subscribe(_columnList => {
         this.columnService.columnList = _columnList.result;
       })
+
+      this.isLoading = false;
     })
   }
 
