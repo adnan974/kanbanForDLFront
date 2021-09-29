@@ -25,9 +25,8 @@ export class CreateColumnModalComponent {
 
   public onSubmit() {
     const title = this.createColumn.get('title')?.value;
-    this.columnService.postColumn({ title }).subscribe(column => {
-      this.columnService.columnList.push(title);
-      console.log('bien envoyé', column);
+    this.columnService.postColumn({ title }).subscribe(column => {      
+      if (column.success) this.columnService.columnList.push(column.result)
     });
   }
 }

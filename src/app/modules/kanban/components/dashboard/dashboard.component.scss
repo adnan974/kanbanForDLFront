@@ -55,11 +55,27 @@ p {
 
 .dashboard_components {
   display: flex;
-  overflow: hidden;
+  overflow-x: scroll;
+  flex-grow: 1;
+  width: calc(100vw - 140px);
   gap: 12px;
 }
 
 .spacer {
   width: 100%;
   height: 30px;
+}
+
+.dashboard_components::-webkit-scrollbar {
+  width: 12px;
+}
+
+.dashboard_components::-webkit-scrollbar-track {
+  background: $background; /* color of the tracking area */
+}
+
+.dashboard_components::-webkit-scrollbar-thumb {
+  background-color: $lightShade; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid $background; /* creates padding around scroll thumb */
 }
