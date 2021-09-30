@@ -7,11 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from './services/notification.service';
 import { ColumnService } from './services/column.service';
 import { DashboardService } from './services/dashboard.service';
+import { AutofocusDirective } from '../shared/directives/autof-focus-directive.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AutofocusDirective],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -24,6 +25,6 @@ import { DashboardService } from './services/dashboard.service';
     ColumnService,
     DashboardService
   ],
-  exports:[NgbModule]
+  exports:[NgbModule,AutofocusDirective]
 })
 export class CoreModule { }

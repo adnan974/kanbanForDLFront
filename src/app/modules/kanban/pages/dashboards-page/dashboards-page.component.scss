@@ -1,3 +1,29 @@
-.dashboard-container{
+.dashboard-container {
     padding: 30px;
 }
+
+.readonly-input-card {
+    outline: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.card-body{
+    padding-right: 30px;
+}
+
+.dashboard-title-container {
+    position: relative;
+}
+
+.dashboard-title-container > input {
+    display: inline-block;
+}
+
+.dashboard-title-container>mat-icon{
+     cursor: pointer;
+     position: absolute;
+     right: -25px;
+
+ }

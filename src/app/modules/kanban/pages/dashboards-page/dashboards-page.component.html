@@ -5,7 +5,14 @@
         <div class="dashboard-content-item col-5" *ngFor="let dashboard of dashboardsData">
             <div class="card" >
                 <div class="card-body">
-                    <h5 class="card-title">{{dashboard.title}}</h5>
+                    <div class="dashboard-title-container">
+                        <input #dashboardTitleInput  [appAutoFocus]="dashboard.isTitleEditable"  [value]="dashboard.title" [class.readonly-input-card]="!dashboard.isTitleEditable" [class.form-control]="dashboard.isTitleEditable" [readonly]="!dashboard.isTitleEditable" (change)="updateTitle(dashboard._id,dashboardTitleInput.value)" (focusout)="changeTitleState(false,dashboard._id)"/>
+                        <mat-icon [class.d-none]="dashboard.isTitleEditable" (click)="changeTitleState(true,dashboard._id)">edit</mat-icon>
+                    </div>
+                    <!-- <h5 class="card-title">
+                        {{dashboard.title}}
+                        <mat-icon>edit</mat-icon>
+                    </h5> -->
                     <p class="card-text">{{dashboard.description}}</p>
                     <a href="#" (click)="onDashboardSelection(dashboard._id)" [routerLink]="['/home/dashboard/',dashboard._id]" class="btn btn-primary">Go to the dashboard</a>
                 </div>

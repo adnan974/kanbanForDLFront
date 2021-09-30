@@ -9,6 +9,7 @@ import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { DashboardsPageComponent } from './pages/dashboards-page/dashboards-page.component';
 import {MatCardModule} from '@angular/material/card'; 
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatCardModule} from '@angular/material/card';
     KanbanRoutingModule,
     ComponentsModule,
     CoreModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
     ]
 })
 
