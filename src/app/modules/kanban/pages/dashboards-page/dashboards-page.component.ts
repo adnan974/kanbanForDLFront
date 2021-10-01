@@ -20,6 +20,7 @@ export class DashboardsPageComponent implements OnInit {
       .subscribe((res:any) => {
         res.dashboards.forEach((dashboard:any) => {
           dashboard.isTitleEditable = false,
+          dashboard.isDescriptionEditable = false,
 
           this.dashboardsData.push(dashboard);
           console.log(this.dashboardsData)
@@ -50,4 +51,19 @@ export class DashboardsPageComponent implements OnInit {
     });
   }
 
+  updateDescription(dashboardId:string,target:any){
+
+    let dashboard:Partial<Dashboard>= {
+      description:target.innerHTML
+    }
+
+    this.dashboardService.updateDashboard(dashboardId,dashboard)
+    .subscribe(res=>{
+      console.log(res);
+    },error=>{
+      console.log(error);
+    });
+  }
+
+  
 }
