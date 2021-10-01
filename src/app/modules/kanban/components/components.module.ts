@@ -11,12 +11,13 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { MatDividerModule } from '@angular/material/divider'; 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 import { NotificationComponent } from './notification/notification.component';
 import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-modal.component';
 import {MatBadgeModule} from '@angular/material/badge'; 
 import { RouterModule } from '@angular/router';
+import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router';
     EditTicketModalComponent,
     CreateColumnModalComponent,
     NotificationComponent,
-    DeleteColumnModalComponent
+    DeleteColumnModalComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { RouterModule } from '@angular/router';
     MatDividerModule,
     ReactiveFormsModule,
     MatBadgeModule,
-    RouterModule
+    RouterModule,
+    FormsModule
     
     ],
   exports: [
@@ -49,6 +52,7 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     KanbanColumnComponent,
     DashboardComponent,
+    FormsModule
   ],
 })
 

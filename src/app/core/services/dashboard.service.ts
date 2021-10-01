@@ -25,6 +25,10 @@ export class DashboardService {
     return this.http.get(`${environment.BASE_URL}/dashboards/${this.activeDashboardId}`)
   }
 
+  public createDashboard(dashboard:Partial<Dashboard>): Observable<any> {
+    return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/dashboards`,dashboard)
+  }
+
   public updateDashboard(dashboardId:string,dashboard:Partial<Dashboard>){
     return this.http.patch(`${environment.BASE_URL}/dashboards/${dashboardId}`,dashboard)
   }

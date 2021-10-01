@@ -8,6 +8,7 @@ import { NotificationService } from './services/notification.service';
 import { ColumnService } from './services/column.service';
 import { DashboardService } from './services/dashboard.service';
 import { AutofocusDirective } from '../shared/directives/autof-focus-directive.directive';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,8 @@ import { AutofocusDirective } from '../shared/directives/autof-focus-directive.d
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    
   ],
   providers:[
     AuthService,

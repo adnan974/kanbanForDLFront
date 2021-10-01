@@ -10,6 +10,7 @@ import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { DashboardsPageComponent } from './pages/dashboards-page/dashboards-page.component';
 import {MatCardModule} from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
+import { CreateDashboardModalComponent } from './components/create-dashboard-modal/create-dashboard-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     HelpPageComponent,
     FaqPageComponent,
     DashboardsPageComponent,
+    CreateDashboardModalComponent
   ],
   imports: [
     CommonModule,

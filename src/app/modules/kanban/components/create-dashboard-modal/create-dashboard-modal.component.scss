@@ -1,0 +1,17 @@
+.add-dashboard-icon {
+    position: relative;
+    top: 3px;
+    border-radius: 7px;
+    background-color: lightgray;
+    line-height: 35px;
+    text-align: center;
+    font-size: 30px;
+    height: 35px;
+    width: 35px;
+}
+
+.add-dashboard-icon:hover {
+    background-color: rgb(168, 166, 166);
+    cursor: pointer;
+    
+}

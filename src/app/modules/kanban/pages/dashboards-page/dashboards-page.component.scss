@@ -1,5 +1,6 @@
 .dashboard-container {
     padding: 30px;
+    
 }
 
 .readonly-input-card {
@@ -10,6 +11,8 @@
 }
 
 .add-dashboard-icon {
+    position: relative;
+    top: 3px;
     border-radius: 7px;
     background-color: lightgray;
     line-height: 35px;
