@@ -9,7 +9,6 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 export class TicketComponent implements OnInit {
 
   @Input() ticketData!: TicketModel;
-
   
   constructor() { }
 

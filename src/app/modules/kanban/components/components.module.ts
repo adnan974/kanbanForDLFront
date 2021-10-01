@@ -11,11 +11,12 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { MatDividerModule } from '@angular/material/divider'; 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationComponent } from './notification/notification.component';
 import { ManageColumnModalComponent } from './manage-column-modal/manage-column-modal.component';
 import {MatBadgeModule} from '@angular/material/badge'; 
 import { RouterModule } from '@angular/router';
+import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { RouterModule } from '@angular/router';
     MatDividerModule,
     ReactiveFormsModule,
     MatBadgeModule,
-    RouterModule
+    RouterModule,
+    FormsModule
     
     ],
   exports: [
@@ -47,6 +49,7 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     KanbanColumnComponent,
     DashboardComponent,
+    FormsModule
   ],
 })
 

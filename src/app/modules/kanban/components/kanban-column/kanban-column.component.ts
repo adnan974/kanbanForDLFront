@@ -10,8 +10,9 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 export class KanbanColumnComponent implements OnInit {
 
-  @Input() columnName: string = '';
+  @Input() column: any = {};
   @Input() ticketsData!: TicketModel[];
+
   public tickets:any=["a","b"];
 
   constructor(
@@ -20,7 +21,7 @@ export class KanbanColumnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.columnName);
+    console.log(this.column);
   }
 
   onDrop(event: CdkDragDrop<string[]>) {

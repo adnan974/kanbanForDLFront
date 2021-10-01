@@ -4,11 +4,15 @@ export class TicketModel{
   public labels: string[];
   public ticketNumber: number; 
   public ticketStatus: string;
+  public associatedDashboard: string;
+  public associatedColumn: string;
 
   constructor(
     title: string,
     ticketNumber: number,
     ticketStatus: string,
+    associatedDashboard: string,
+    associatedColumn: string,
     description?: string,
     labels?: string[],
   ) {
@@ -17,6 +21,8 @@ export class TicketModel{
     this.labels = labels || [];
     this.ticketNumber = ticketNumber;
     this.ticketStatus = ticketStatus;
+    this.associatedDashboard = associatedDashboard;
+    this.associatedColumn = associatedColumn;
   }
 
 }

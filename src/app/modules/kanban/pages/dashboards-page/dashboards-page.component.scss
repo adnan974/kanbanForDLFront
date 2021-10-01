@@ -1,3 +1,89 @@
-.dashboard-container{
+.dashboard-container {
     padding: 30px;
+    height: calc(100vh - 80px);
+    overflow: scroll;
+}
+
+.readonly-input-card {
+    outline: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.add-dashboard-icon {
+    position: relative;
+    top: 3px;
+    border-radius: 7px;
+    background-color: lightgray;
+    line-height: 35px;
+    text-align: center;
+    font-size: 30px;
+    height: 35px;
+    width: 35px;
+}
+
+.add-dashboard-icon:hover {
+    background-color: rgb(168, 166, 166);
+    cursor: pointer;
+    
+}
+
+.card {
+}
+
+.card-body {
+    padding-right: 30px;
+}
+
+.delete-dashboard-icon {
+    float: right;
+    font-size: 28px;
+}
+
+.delete-dashboard-icon:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+.dashboard-title-container {
+    position: relative;
+}
+
+.dashboard-title-container > input {
+    display: inline-block;
+    width: 100%;
+    padding-right: 25px;
+}
+
+.dashboard-title-container > input:hover + mat-icon {
+    display: inline;
+    position: absolute;
+    right: 0px;
+}
+
+.dashboard-title-container > mat-icon {
+    display: none;
+}
+
+.dashboard-description-container {
+    position: relative;
+}
+.dashboard-description-container > p {
+    display: inline;
+}
+
+.dashboard-description-container > mat-icon {
+    display: none;
+}
+
+.dashboard-description-container > p:hover + mat-icon {
+    display: inline-block;
+    font-size: 20px;
+    color: gray;
+    position: absolute;
+}
+
+.btn-primary {
+    margin-top: 20px;
 }

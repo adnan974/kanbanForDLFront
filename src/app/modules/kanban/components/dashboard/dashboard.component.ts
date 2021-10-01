@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
 
         this.ticketService.getUserTickets().subscribe(data => {
           console.log(data);
+          this.ticketService.ticketList = data;
         });
       })
 

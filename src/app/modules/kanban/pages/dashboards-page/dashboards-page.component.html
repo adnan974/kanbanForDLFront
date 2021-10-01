@@ -1,13 +1,40 @@
 <div class="dashboard-container">
-    <h2>Dashboards</h2>
 
-    <div class="dashboard-content-container row" >
-        <div class="dashboard-content-item col-5" *ngFor="let dashboard of dashboardsData">
-            <div class="card" >
+    <h2>
+        Dashboards
+        <app-create-dashboard-modal></app-create-dashboard-modal>
+    </h2>
+
+
+    <div class="dashboard-content-container row ">
+        <div class="dashboard-content-item col-6 mb-3" *ngFor="let dashboard of dashboardsData">
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{dashboard.title}}</h5>
-                    <p class="card-text">{{dashboard.description}}</p>
-                    <a href="#" (click)="onDashboardSelection(dashboard._id)" [routerLink]="['/home/dashboard/',dashboard._id]" class="btn btn-primary">Go to the dashboard</a>
+                    <mat-icon class="delete-dashboard-icon">close</mat-icon>
+                    <img class="card-img-top" src="/assets/projet-demarrage-equipe_74855-4818.webp"
+                        alt="Card image cap">
+                    <div class="dashboard-title-container">
+                        <input #dashboardTitleInput [appAutoFocus]="dashboard.isTitleEditable" [value]="dashboard.title"
+                            [class.readonly-input-card]="!dashboard.isTitleEditable"
+                            [class.form-control]="dashboard.isTitleEditable" [readonly]="!dashboard.isTitleEditable"
+                            (change)="updateTitle(dashboard._id,dashboardTitleInput.value)"
+                            (focusout)="changeTitleState(false,dashboard._id)"
+                            (click)="changeTitleState(true,dashboard._id)" />
+
+                        <mat-icon [class.d-none]="dashboard.isTitleEditable">edit</mat-icon>
+                    </div>
+                    <div class="dashboard-description-container">
+
+                        
+                        <p #description contenteditable="true" class="card-text" (input)="updateDescription(dashboard._id,$event.target)">
+                            {{dashboard.description}}
+
+                        </p>
+                        <mat-icon>edit</mat-icon>
+                    </div>
+                    <a href="#" (click)="onDashboardSelection(dashboard._id)"
+                        [routerLink]="['/home/dashboard/',dashboard._id]" class="btn btn-primary">Go to the
+                        dashboard</a>
                 </div>
             </div>
         </div>

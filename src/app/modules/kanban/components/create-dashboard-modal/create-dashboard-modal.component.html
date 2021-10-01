@@ -1,0 +1,28 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create dashboard</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #formData (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Title..." class="form-control" [(ngModel)]="newDashboard.title">
+
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="text" name="description" id="description" placeholder="Description..."
+          class="form-control" [(ngModel)]="newDashboard.description"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark" >Save</button>
+      </div>
+    </form>
+  </div>
+  
+</ng-template>
+
+<mat-icon class="add-dashboard-icon" (click)="open(content)">add</mat-icon>

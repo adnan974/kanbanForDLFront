@@ -19,5 +19,5 @@
 <div class="spacer"></div>
 
 <div *ngIf="!isLoading" class="dashboard_components" cdkDropListGroup>
-  <app-kanban-column *ngFor="let column of this.columnService.columnList" [columnName]="column.title" [ticketsData]="[]"></app-kanban-column>
+  <app-kanban-column *ngFor="let column of this.columnService.columnList" [column]="column" [ticketsData]="[]"></app-kanban-column>
 </div>
