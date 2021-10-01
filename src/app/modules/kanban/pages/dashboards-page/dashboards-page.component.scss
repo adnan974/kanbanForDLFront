@@ -1,6 +1,7 @@
 .dashboard-container {
     padding: 30px;
-    
+    height: calc(100vh - 80px);
+    overflow: scroll;
 }
 
 .readonly-input-card {
