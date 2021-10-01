@@ -4,11 +4,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
-  selector: 'app-delete-column-modal',
-  templateUrl: './delete-column-modal.component.html',
-  styleUrls: ['./delete-column-modal.component.scss']
+  selector: 'app-manage-column-modal',
+  templateUrl: './manage-column-modal.component.html',
+  styleUrls: ['./manage-column-modal.component.scss']
 })
-export class DeleteColumnModalComponent {
+
+export class ManageColumnModalComponent {
   public deleteColumn: FormGroup = new FormGroup({
     columnList: new FormControl(),
     checkedOption: new FormControl({ value: true })
@@ -34,4 +35,11 @@ export class DeleteColumnModalComponent {
     });
   }
 
+  public onMoveUp() {
+    console.log('e');
+  }
+
+  public onMoveDown() {
+    console.log('e')
+  }
 }

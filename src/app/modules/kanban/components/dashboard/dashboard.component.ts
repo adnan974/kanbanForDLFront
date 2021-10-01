@@ -24,6 +24,10 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getDashboardById().subscribe(_ => {
       this.columnService.getColumn().subscribe(_columnList => {
         this.columnService.columnList = _columnList.result;
+
+        this.ticketService.getUserTickets().subscribe(data => {
+          console.log(data);
+        });
       })
 
       this.isLoading = false;

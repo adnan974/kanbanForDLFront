@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment"
 import { DashboardService } from './dashboard.service';
-import { UserStoreService } from './userStore.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class ColumnService {
 
   constructor(
     private http: HttpClient,
-    private userStoreService: UserStoreService,
     private dashboardService: DashboardService
   ) { }
 
@@ -27,6 +25,6 @@ export class ColumnService {
   }
 
   public deleteColumn(columnId: any): Observable<any> {
-    return this.http.delete(`${environment.BASE_URL}/dashboards/${columnId}`)
+    return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }
 }
