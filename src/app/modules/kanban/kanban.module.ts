@@ -11,6 +11,7 @@ import { DashboardsPageComponent } from './pages/dashboards-page/dashboards-page
 import {MatCardModule} from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
 import { CreateDashboardModalComponent } from './components/create-dashboard-modal/create-dashboard-modal.component';
+import { DeleteDashboardModalComponent } from './components/delete-dashboard-modal/delete-dashboard-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreateDashboardModalComponent } from './components/create-dashboard-mod
     HelpPageComponent,
     FaqPageComponent,
     DashboardsPageComponent,
-    CreateDashboardModalComponent
+    CreateDashboardModalComponent,
+    DeleteDashboardModalComponent
   ],
   imports: [
     CommonModule,

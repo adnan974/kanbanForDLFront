@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 import { Dashboard } from 'src/app/shared/models/dashboard.model';
@@ -9,6 +9,8 @@ import { Dashboard } from 'src/app/shared/models/dashboard.model';
   styleUrls: ['./create-dashboard-modal.component.scss']
 })
 export class CreateDashboardModalComponent implements OnInit {
+
+  @Output() newDashboardEvent = new EventEmitter<Partial<Dashboard>>();
 
   constructor(
     private modalService: NgbModal,
@@ -30,7 +32,8 @@ export class CreateDashboardModalComponent implements OnInit {
    
   onSubmit(){
     this.dashboardService.createDashboard(this.newDashboard)
-    .subscribe(dashboard=>{
+    .subscribe(res=>{
+      this.newDashboardEvent.emit(res.result);
       this.modalService.dismissAll();
     })
   }

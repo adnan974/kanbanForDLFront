@@ -2,7 +2,7 @@
 
     <h2>
         Dashboards
-        <app-create-dashboard-modal></app-create-dashboard-modal>
+        <app-create-dashboard-modal (newDashboardEvent)="addDashboard($event)"></app-create-dashboard-modal>
     </h2>
 
 
@@ -10,7 +10,7 @@
         <div class="dashboard-content-item col-6 mb-3" *ngFor="let dashboard of dashboardsData">
             <div class="card">
                 <div class="card-body">
-                    <mat-icon class="delete-dashboard-icon">close</mat-icon>
+                    <app-delete-dashboard-modal [dashboardId]="dashboard._id" (deleteDashboardEvent)="deleteDashboard($event)" class="delete-dashboard-component"></app-delete-dashboard-modal>
                     <img class="card-img-top" src="/assets/projet-demarrage-equipe_74855-4818.webp"
                         alt="Card image cap">
                     <div class="dashboard-title-container">

@@ -9,20 +9,22 @@
     <form #formData (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" placeholder="Title..." class="form-control" [(ngModel)]="newDashboard.title">
-
+        <input #dashboardTitle="ngModel" type="text" name="title" id="title" placeholder="Title..." class="form-control"
+          [(ngModel)]="newDashboard.title" required>
+        <small class="text-danger" [class.d-none]="dashboardTitle.untouched || dashboardTitle.valid">Invalid
+          title</small>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea type="text" name="description" id="description" placeholder="Description..."
-          class="form-control" [(ngModel)]="newDashboard.description"></textarea>
+        <textarea type="text" name="description" id="description" placeholder="Description..." class="form-control"
+          [(ngModel)]="newDashboard.description"></textarea>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-dark" >Save</button>
+        <button type="submit" class="btn btn-outline-dark">Save</button>
       </div>
     </form>
   </div>
-  
+
 </ng-template>
 
 <mat-icon class="add-dashboard-icon" (click)="open(content)">add</mat-icon>

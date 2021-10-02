@@ -18,6 +18,7 @@ import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-
 import {MatBadgeModule} from '@angular/material/badge'; 
 import { RouterModule } from '@angular/router';
 import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
+import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-dashboard-modal.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { CreateDashboardModalComponent } from './create-dashboard-modal/create-d
     NavbarComponent,
     KanbanColumnComponent,
     DashboardComponent,
-    FormsModule
+    FormsModule,
+    
   ],
 })
 

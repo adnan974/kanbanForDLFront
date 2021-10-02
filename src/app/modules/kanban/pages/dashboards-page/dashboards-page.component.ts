@@ -65,5 +65,13 @@ export class DashboardsPageComponent implements OnInit {
     });
   }
 
+  addDashboard(dashboard:Partial<Dashboard>){
+    this.dashboardsData.push(dashboard);
+  }
+
+  deleteDashboard(dashboardId:string){
+    this.dashboardsData = this.dashboardsData.filter((dashboard:any)=> dashboard._id != dashboardId);
+  }
+
   
 }

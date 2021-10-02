@@ -32,4 +32,8 @@ export class DashboardService {
   public updateDashboard(dashboardId:string,dashboard:Partial<Dashboard>){
     return this.http.patch(`${environment.BASE_URL}/dashboards/${dashboardId}`,dashboard)
   }
+
+  public deleteDashboard(dashboardId:string){
+    return this.http.delete(`${environment.BASE_URL}/dashboards/${dashboardId}`)
+  }
 }
