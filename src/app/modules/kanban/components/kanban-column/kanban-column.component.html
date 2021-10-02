@@ -1,6 +1,6 @@
 <div class="column_header">
-  <div class="column_name">{{ columnName | uppercase }}</div>
-  <app-edit-ticket-modal></app-edit-ticket-modal>
+  <div class="column_name">{{ column.title | uppercase }}</div>
+  <app-edit-ticket-modal [columnId]="column._id"></app-edit-ticket-modal>
 </div>
 
 <div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">

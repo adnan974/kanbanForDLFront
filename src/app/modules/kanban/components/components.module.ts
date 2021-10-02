@@ -12,9 +12,8 @@ import { EditTicketModalComponent } from './edit-ticket-modal/edit-ticket-modal.
 import { CoreModule } from 'src/app/core/core.module';
 import { MatDividerModule } from '@angular/material/divider'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateColumnModalComponent } from './create-column-modal/create-column-modal.component';
 import { NotificationComponent } from './notification/notification.component';
-import { DeleteColumnModalComponent } from './delete-column-modal/delete-column-modal.component';
+import { ManageColumnModalComponent } from './manage-column-modal/manage-column-modal.component';
 import {MatBadgeModule} from '@angular/material/badge'; 
 import { RouterModule } from '@angular/router';
 import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
@@ -30,10 +29,8 @@ import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-d
     DashboardComponent,
     TicketComponent,
     EditTicketModalComponent,
-    CreateColumnModalComponent,
+    ManageColumnModalComponent,
     NotificationComponent,
-    DeleteColumnModalComponent,
-    
   ],
   imports: [
     CommonModule,

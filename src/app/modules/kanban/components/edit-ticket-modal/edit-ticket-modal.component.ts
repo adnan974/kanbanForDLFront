@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
-import { ColumnService } from 'src/app/core/services/column.service';
+import { DashboardService } from 'src/app/core/services/dashboard.service';
 
 @Component({
   selector: 'app-edit-ticket-modal',
@@ -18,13 +18,17 @@ export class EditTicketModalComponent {
     labels: new FormControl()
   });
 
+  @Input() columnId: string = '';
+
   constructor(
     private modalService: NgbModal,
+    private dashboardService: DashboardService,
     private ticketService: TicketService,
   ) {}
 
   public openModal(content: any) {
     this.modalService.open(content)
+    console.log(this.columnId);
   }
 
   getTicketNumber(): number {
@@ -36,9 +40,12 @@ export class EditTicketModalComponent {
       this.editTicketForm.get('title')?.value,
       this.getTicketNumber(),
       "To Do",
+      this.dashboardService.activeDashboardId || '',
+      this.columnId,
       this.editTicketForm.get('description')?.value,
       []
     )
+
 
     this.ticketService.createTicket(ticketModel).subscribe(
       () => console.log('ticket posté'),
