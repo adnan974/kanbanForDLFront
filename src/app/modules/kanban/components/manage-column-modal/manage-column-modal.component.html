@@ -1,21 +1,33 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Delete column</h4>
+    <h4 class="modal-title" id="modal-basic-title">Manage column</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 
   <div class="modal-body">
-    <form [formGroup]="deleteColumn">
-      <div class="form-group">
-        <label for="title">Add a column</label>
-        <input multiple class="form-control" formControlName="addColumnInput" />
-        <button type="button" class="btn btn-outline-dark" (click)="onMoveUp();"><mat-icon>Add column</mat-icon></button>
+
+    <form (ngSubmit)="addColumn()">
+      <div class="form-group" >
+
+        <label for="column-name">Add a column</label>
+        <input [(ngModel)]="newColumn.title" name="column-name" multiple class="form-control" />
+
+        <div class="form-group">
+          <button  type="submit" class="btn btn-primary">Add column
+          </button>
+
+        </div>
       </div>
+    </form>
+
+
+    <form [formGroup]="deleteColumn">
+
 
       <div class="form-group">
-        <label for="title">Add a column</label>
+        <label for="title">Delete a column</label>
         <select multiple class="form-control" formControlName="columnList">
           <option *ngFor="let column of this.columnService.columnList; let i = index">{{ column.title }}</option>
         </select>
@@ -38,8 +50,12 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="this.onMoveDown();"><mat-icon>keyboard_arrow_down</mat-icon></button>
-    <button type="button" class="btn btn-outline-dark" (click)="onMoveUp();"><mat-icon>keyboard_arrow_up</mat-icon></button>
+    <button type="button" class="btn btn-outline-dark" (click)="this.onMoveDown();">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <button type="button" class="btn btn-outline-dark">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
     <button type="button" class="btn btn-outline-dark" (click)="onSubmit();">Delete column</button>
   </div>
 </ng-template>

@@ -21,12 +21,14 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("dashboard on init")
     this.dashboardService.getDashboardById().subscribe(_ => {
       this.columnService.getColumn().subscribe(_columnList => {
+
+        console.log(_columnList.result);
         this.columnService.columnList = _columnList.result;
 
         this.ticketService.getUserTickets().subscribe(data => {
-          console.log(data);
           this.ticketService.ticketList = data;
         });
       })

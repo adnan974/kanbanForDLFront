@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ColumnService } from 'src/app/core/services/column.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manage-column-modal',
@@ -10,6 +11,13 @@ import { ColumnService } from 'src/app/core/services/column.service';
 })
 
 export class ManageColumnModalComponent {
+
+
+  public newColumn:Partial<any> = {
+    title:"",
+    
+  }
+
   public deleteColumn: FormGroup = new FormGroup({
     columnList: new FormControl(),
     checkedOption: new FormControl({ value: true })
@@ -17,7 +25,8 @@ export class ManageColumnModalComponent {
 
   constructor(
     private modalService: NgbModal,
-    public columnService: ColumnService
+    public columnService: ColumnService,
+    private route: ActivatedRoute
   ) { }
 
 
@@ -30,16 +39,22 @@ export class ManageColumnModalComponent {
     const newField = this.columnService.columnList.find(column => column.title === columnToDelete[0]);
 
     this.columnService.deleteColumn(newField._id).subscribe(_success => {
-      console.log(newField)
       if (_success) this.columnService.columnList = this.columnService.columnList.filter(column => column.title !== columnToDelete[0])
     });
   }
 
-  public onMoveUp() {
-    console.log('e');
+  public addColumn() {
+
+    this.columnService.postColumn(this.newColumn).subscribe((res)=>{
+      console.log(res);
+      this.columnService.columnList.push(res.result);
+
+      
+
+    });
+
   }
 
   public onMoveDown() {
-    console.log('e')
   }
 }

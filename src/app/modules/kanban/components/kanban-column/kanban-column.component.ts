@@ -21,7 +21,6 @@ export class KanbanColumnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.column);
   }
 
   onDrop(event: CdkDragDrop<string[]>) {

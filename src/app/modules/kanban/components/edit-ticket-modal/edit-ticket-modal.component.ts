@@ -28,7 +28,6 @@ export class EditTicketModalComponent {
 
   public openModal(content: any) {
     this.modalService.open(content)
-    console.log(this.columnId);
   }
 
   getTicketNumber(): number {

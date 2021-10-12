@@ -20,8 +20,8 @@ export class ColumnService {
     return this.http.get(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`)
   }
 
-  public postColumn(columnName: any): Observable<any>{
-    return this.http.post(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`, columnName)
+  public postColumn(newColumn: any): Observable<any>{
+    return this.http.post(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`, newColumn)
   }
 
   public deleteColumn(columnId: any): Observable<any> {

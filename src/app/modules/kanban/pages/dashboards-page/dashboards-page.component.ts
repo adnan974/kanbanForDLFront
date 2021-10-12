@@ -23,7 +23,6 @@ export class DashboardsPageComponent implements OnInit {
           dashboard.isDescriptionEditable = false,
 
           this.dashboardsData.push(dashboard);
-          console.log(this.dashboardsData)
         });
       })
   }
