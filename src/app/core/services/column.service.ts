@@ -27,4 +27,8 @@ export class ColumnService {
   public deleteColumn(columnId: any): Observable<any> {
     return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }
+
+  public sortTickets(columnList: any[], ticketList: any[]) {
+    this.columnList = columnList.map(column => ({ columnProperties: column, ticketList: ticketList.filter(ticket => ticket.associatedColumn === column._id) }));
+  }
 }

@@ -26,10 +26,13 @@ export class DashboardComponent implements OnInit {
       this.columnService.getColumn().subscribe(_columnList => {
 
         console.log(_columnList.result);
-        this.columnService.columnList = _columnList.result;
 
         this.ticketService.getUserTickets().subscribe(data => {
           this.ticketService.ticketList = data;
+          console.log(data.tickets)
+
+          this.columnService.sortTickets(_columnList.result, data.tickets);
+          console.log(this.columnService.columnList);
         });
       })
 
