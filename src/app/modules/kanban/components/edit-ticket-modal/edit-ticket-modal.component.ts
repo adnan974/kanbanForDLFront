@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-edit-ticket-modal',
@@ -24,6 +25,7 @@ export class EditTicketModalComponent {
     private modalService: NgbModal,
     private dashboardService: DashboardService,
     private ticketService: TicketService,
+    private columnService: ColumnService
   ) {}
 
   public openModal(content: any) {
@@ -47,8 +49,10 @@ export class EditTicketModalComponent {
 
 
     this.ticketService.createTicket(ticketModel).subscribe(
-      () => console.log('ticket posté'),
-      (err) => console.log('error encore', err)
+      (ticket) => {
+        this.columnService.addTicket(ticket.result);
+        console.log(ticket);
+      }, (err) => console.log('error encore', err)
     );
   }
 }
