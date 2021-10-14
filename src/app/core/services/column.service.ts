@@ -24,6 +24,10 @@ export class ColumnService {
     return this.http.post(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`, newColumn)
   }
 
+  public updateColumn(columnId: any, updatedColumn: any): Observable<any>{
+    return this.http.patch(`${environment.BASE_URL}/columns/${columnId}`, updatedColumn)
+  }
+
   public deleteColumn(columnId: any): Observable<any> {
     return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }

@@ -1,9 +1,21 @@
 <div class="column_header">
-  <div class="column_name">{{ column.columnProperties.title | uppercase }}</div>
+  <div class="column_name">
+    <input #titleInput
+      [class.form-control]="column.columnProperties.isTitleEditable"
+      [class.readonly-input-card]="!column.columnProperties.isTitleEditable"
+      [readonly]="!column.columnProperties.isTitleEditable" [value]="column.columnProperties.title | uppercase"
+      (click)="changeTitleState(true,column.columnProperties._id)" 
+      (focusout)="changeTitleState(false,column.columnProperties._id)"
+      (change)="updateTitle(column.columnProperties._id,titleInput.value)"
+
+      />
+    <mat-icon [class.d-none]="column.columnProperties.isTitleEditable">edit</mat-icon>
+  </div>
   <app-edit-ticket-modal [columnId]="column.columnProperties._id"></app-edit-ticket-modal>
 </div>
 
-<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">
+<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets"
+  (cdkDropListDropped)="onDrop($event)">
   <div class="drop_item" cdkDrag *ngFor="let ticket of column.ticketList">
     <app-ticket [ticketData]="ticket"></app-ticket>
   </div>

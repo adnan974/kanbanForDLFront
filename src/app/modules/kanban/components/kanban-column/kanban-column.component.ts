@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-kanban-column',
@@ -16,7 +17,8 @@ export class KanbanColumnComponent implements OnInit {
   public tickets:any=["a","b"];
 
   constructor(
-  ) { 
+    private columnService:ColumnService
+) { 
     
   }
 
@@ -39,6 +41,18 @@ export class KanbanColumnComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  changeTitleState(state:boolean,id:string){
+   this.column.columnProperties.isTitleEditable = state;
+  }
+
+  updateTitle(id:string,title:string){
+
+    this.columnService.updateColumn(id,{title:title})
+    .subscribe(res=>{
+      this.column.columnProperties.title = title;
+    });
   }
 
 }

@@ -18,6 +18,31 @@
   font-weight: 800;
 }
 
+.column_name{
+  position: relative;
+}
+
+.column_name > mat-icon{
+  display: none;
+}
+
+.column_name  > input:hover + mat-icon {
+  display: inline;
+  position: absolute;
+  right: 0px;
+}
+
+.column_name  > input{
+  width: 240px;
+}
+
+.readonly-input-card {
+  outline: none;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
 .drop_list {
   padding: 10px 0;
   display: flex;
