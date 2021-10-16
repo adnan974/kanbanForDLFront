@@ -36,10 +36,7 @@ export class ColumnService {
     for (let i = 0; i < this.columnList.length; i++) {
       if (ticket.associatedColumn ===  this.columnList[i].columnProperties._id) {
         this.columnList[i].ticketList.push(ticket);
-      } else {
-        console.log('no match')
       }
     }
-  console.log(this.columnList);
   }
 }

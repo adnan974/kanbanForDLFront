@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-kanban-column',
@@ -13,30 +13,41 @@ export class KanbanColumnComponent implements OnInit {
   @Input() column: any = {};
   @Input() ticketsData!: TicketModel[];
 
-  public tickets:any=["a","b"];
-
   constructor(
-  ) { 
-    
-  }
+    private columnService: ColumnService
+  ) {}
 
   ngOnInit(): void {
     console.log(this.column.ticketList);
   }
 
-  onDrop(event: CdkDragDrop<string[]>) {
+  onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+      );
+
+      const columnList = this.columnService.columnList;
+      for (const column of columnList) {
+        if (column.columnProperties._id === event.container.data[0].associatedColumn) {
+          const tempColumn = column.ticketList[event.previousIndex];
+          column.ticketList[event.previousIndex] = column.ticketList[event.currentIndex];
+          column.ticketList[event.currentIndex] = tempColumn;
+        }
+      }
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+      );
+      console.log('Transfert Item', event);
     }
   }
-
 }
+
+// Drag and drop ()
+// Edition des tickets

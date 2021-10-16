@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TicketService } from 'src/app/core/services/ticket.service';
@@ -12,7 +12,7 @@ import { ColumnService } from 'src/app/core/services/column.service';
   styleUrls: ['./edit-ticket-modal.component.scss']
 })
 
-export class EditTicketModalComponent {
+export class EditTicketModalComponent implements OnInit {
   public editTicketForm: FormGroup = new FormGroup({
     title: new FormControl(),
     description: new FormControl(),
@@ -20,6 +20,8 @@ export class EditTicketModalComponent {
   });
 
   @Input() columnId: string = '';
+  @Input() iconType: 'add' | 'edit' = 'add';
+  @Input() ticketData: any = 'default';
 
   constructor(
     private modalService: NgbModal,
@@ -27,6 +29,9 @@ export class EditTicketModalComponent {
     private ticketService: TicketService,
     private columnService: ColumnService
   ) {}
+
+  ngOnInit() {
+  }
 
   public openModal(content: any) {
     this.modalService.open(content)
@@ -51,7 +56,6 @@ export class EditTicketModalComponent {
     this.ticketService.createTicket(ticketModel).subscribe(
       (ticket) => {
         this.columnService.addTicket(ticket.result);
-        console.log(ticket);
       }, (err) => console.log('error encore', err)
     );
   }

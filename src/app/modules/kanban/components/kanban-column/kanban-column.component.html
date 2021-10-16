@@ -1,9 +1,9 @@
 <div class="column_header">
   <div class="column_name">{{ column.columnProperties.title | uppercase }}</div>
-  <app-edit-ticket-modal [columnId]="column.columnProperties._id"></app-edit-ticket-modal>
+  <app-edit-ticket-modal [columnId]="column.columnProperties._id" [iconType]="'add'"></app-edit-ticket-modal>
 </div>
 
-<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="onDrop($event)">
+<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="column.ticketList" (cdkDropListDropped)="onDrop($event)">
   <div class="drop_item" cdkDrag *ngFor="let ticket of column.ticketList">
     <app-ticket [ticketData]="ticket"></app-ticket>
   </div>
