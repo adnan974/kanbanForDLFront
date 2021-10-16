@@ -19,6 +19,8 @@ export class KanbanColumnComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.column.ticketList);
+    console.log("column: ")
+    console.log(this.column);
   }
 
   onDrop(event: CdkDragDrop<any[]>) {
@@ -47,6 +49,19 @@ export class KanbanColumnComponent implements OnInit {
       console.log('Transfert Item', event);
     }
   }
+
+  changeTitleState(state:boolean,id:string){
+   this.column.columnProperties.isTitleEditable = state;
+  }
+
+  updateTitle(id:string,title:string){
+
+    this.columnService.updateColumn(id,{title:title})
+    .subscribe(res=>{
+      this.column.columnProperties.title = title;
+    });
+  }
+
 }
 
 // Drag and drop ()

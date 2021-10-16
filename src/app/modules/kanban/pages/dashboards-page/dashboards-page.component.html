@@ -19,9 +19,10 @@
                             [class.form-control]="dashboard.isTitleEditable" [readonly]="!dashboard.isTitleEditable"
                             (change)="updateTitle(dashboard._id,dashboardTitleInput.value)"
                             (focusout)="changeTitleState(false,dashboard._id)"
-                            (click)="changeTitleState(true,dashboard._id)" />
+                            (click)="changeTitleState(true,dashboard._id)" 
+                        />
 
-                        <mat-icon [class.d-none]="dashboard.isTitleEditable">edit</mat-icon>
+                        <mat-icon [class.d-none]="dashboard.isTitleEditable" (click)="changeTitleState(true,dashboard._id)">edit</mat-icon>
                     </div>
                     <div class="dashboard-description-container">
 

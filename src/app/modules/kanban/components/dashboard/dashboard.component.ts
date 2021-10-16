@@ -32,7 +32,15 @@ export class DashboardComponent implements OnInit {
           console.log(data.tickets)
 
           this.columnService.sortTickets(_columnList.result, data.tickets);
+          console.log("column service column list");
           console.log(this.columnService.columnList);
+
+          // TODO: A Ranger
+          this.columnService.columnList.forEach((element)=>{
+            element.columnProperties.isEditable = false;
+          })
+
+
         });
       })
 

@@ -12,13 +12,13 @@
       <div class="form-group">
 
         <label for="column-name">Add a column</label>
-        <input [(ngModel)]="newColumn.title" name="column-name" multiple class="form-control" />
+        <input [(ngModel)]="newColumn.title" name="column-name" multiple class="form-control" required />
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-outline-dark">Add column
-          </button>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="!newColumn.title" class="btn btn-outline-dark">Add column
+        </button>
 
-        </div>
       </div>
     </form>
 
@@ -28,33 +28,37 @@
 
       <div class="form-group">
         <label for="title">Delete a column</label>
-        <select [(ngModel)]="deleteColumnFormData.selectedItem" name="title" multiple class="form-control" >
-          <option *ngFor="let column of this.columnService.columnList; let i = index" [value]="column._id">{{ column.title}}</option>
+        <select [(ngModel)]="deleteColumnFormData.selectedItem" name="title" multiple class="form-control">
+          <option *ngFor="let column of this.columnService.columnList; let i = index"
+            [value]="column.columnProperties._id">{{ column.columnProperties.title}}</option>
         </select>
       </div>
 
       <div class="form-check">
-        <input [(ngModel)]="deleteColumnFormData.checkBoxFirstAgreement" name="defaultCheck1" class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+        <input [(ngModel)]="deleteColumnFormData.checkBoxFirstAgreement" name="defaultCheck1" class="form-check-input"
+          type="checkbox" value="" id="defaultCheck1">
         <label class="form-check-label" for="defaultCheck1">
           Delete a column means delete all the tickets in it (check to delete)
         </label>
       </div>
 
-    
 
-      <button type="submit" class="btn btn-outline-dark" >Delete column</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-dark"  [disabled]="!deleteColumnFormData.checkBoxFirstAgreement">Delete column</button>
+
+      </div>
 
     </form>
   </div>
 
-  <div class="modal-footer">
+  <!-- <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="this.onMoveDown();">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <button type="button" class="btn btn-outline-dark">
       <mat-icon>keyboard_arrow_up</mat-icon>
     </button>
-  </div>
+  </div> -->
 </ng-template>
 
 <button ngbDropdownItem (click)="openModal(content)">Manage columns</button>
