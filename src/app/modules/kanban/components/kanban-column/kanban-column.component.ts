@@ -18,8 +18,6 @@ export class KanbanColumnComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.column.ticketList);
-    console.log("column: ")
     console.log(this.column);
   }
 
@@ -31,14 +29,14 @@ export class KanbanColumnComponent implements OnInit {
         event.currentIndex
       );
 
-      const columnList = this.columnService.columnList;
-      for (const column of columnList) {
-        if (column.columnProperties._id === event.container.data[0].associatedColumn) {
-          const tempColumn = column.ticketList[event.previousIndex];
-          column.ticketList[event.previousIndex] = column.ticketList[event.currentIndex];
-          column.ticketList[event.currentIndex] = tempColumn;
-        }
-      }
+      const ticketsId = event.container.data.map(ticket => ticket._id);
+      const columnId = event.container.data[0].associatedColumn;
+      console.log(ticketsId, 'columnId');
+      this.columnService.updateColumnList(columnId, ticketsId).subscribe(res => {
+        console.log(res);
+      });
+      // const columnList = this.columnService.columnList.map(ticket => ticket.columnProperties);
+      // console.log(columnList.map(column => column.ticketList));
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -57,7 +55,7 @@ export class KanbanColumnComponent implements OnInit {
   updateTitle(id:string,title:string){
 
     this.columnService.updateColumn(id,{title:title})
-    .subscribe(res=>{
+    .subscribe(res => {
       this.column.columnProperties.title = title;
     });
   }

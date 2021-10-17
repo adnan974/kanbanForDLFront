@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ColumnService } from 'src/app/core/services/column.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -51,7 +50,7 @@ export class ManageColumnModalComponent {
 
     this.columnService.postColumn(this.newColumn).subscribe((res) => {
       console.log(res);
-      this.columnService.columnList.push({columnProperties: res.result});
+      this.columnService.columnList.push(res.result);
     });
 
   }
@@ -59,11 +58,11 @@ export class ManageColumnModalComponent {
   public _deleteColumn() {
 
     let columnId: string = this.deleteColumnFormData.selectedItem[0];
-    console.log(this.deleteColumnFormData);
+    console.log(columnId);
     this.columnService.deleteColumn(columnId).subscribe((res) => {
       console.log(res);
       this.columnService.columnList = this.columnService.columnList.filter((element) => {
-        return element.columnProperties._id != columnId;
+        return element._id != columnId;
       });
       console.log(this.columnService.columnList)
 

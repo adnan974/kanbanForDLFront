@@ -24,17 +24,9 @@ export class DashboardComponent implements OnInit {
     console.log("dashboard on init")
     this.dashboardService.getDashboardById().subscribe(_ => {
       this.columnService.getColumn().subscribe(_columnList => {
-
-        console.log(_columnList.result);
-
         this.ticketService.getUserTickets().subscribe(data => {
           this.ticketService.ticketList = data;
-          console.log(data.tickets)
-
           this.columnService.sortTickets(_columnList.result, data.tickets);
-          console.log("column service column list");
-          console.log(this.columnService.columnList);
-
           // TODO: A Ranger
           this.columnService.columnList.forEach((element)=>{
             element.columnProperties.isEditable = false;

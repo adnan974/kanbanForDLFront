@@ -4,7 +4,7 @@
 
 <div class='header'>
   <h3>{{ticketData.title}}</h3>
-  <app-edit-ticket-modal [columnId]="ticketData.associatedColumn" [ticketData]="'ici'" [iconType]="'edit'"></app-edit-ticket-modal>
+  <app-edit-ticket-modal [columnId]="ticketData.associatedColumn" [ticketData]="ticketData" [iconType]="'edit'"></app-edit-ticket-modal>
 </div>
 
 <div class="description">

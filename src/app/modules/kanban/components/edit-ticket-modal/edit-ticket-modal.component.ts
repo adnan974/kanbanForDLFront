@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
@@ -13,16 +13,16 @@ import { ColumnService } from 'src/app/core/services/column.service';
 })
 
 export class EditTicketModalComponent implements OnInit {
-  public editTicketForm: FormGroup = new FormGroup({
-    title: new FormControl(),
-    description: new FormControl(),
-    labels: new FormControl()
-  });
-
   @Input() columnId: string = '';
   @Input() iconType: 'add' | 'edit' = 'add';
   @Input() ticketData: any = 'default';
-
+  
+  public editTicketForm: FormGroup = new FormGroup({
+    title: new FormControl(this.ticketData.title),
+    description: new FormControl(this.ticketData.description),
+    labels: new FormControl()
+  });
+  
   constructor(
     private modalService: NgbModal,
     private dashboardService: DashboardService,
@@ -31,6 +31,12 @@ export class EditTicketModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+  //   this.editTicketForm = this.fb.group({
+  //     name: ["test", [Validators.required, Validators.maxLength(30)]],
+  //     address: this.fb.group({
+  //         pin: ["123456", Validators.required]
+  //     })
+  // });>
   }
 
   public openModal(content: any) {
