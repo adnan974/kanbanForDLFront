@@ -13,6 +13,7 @@ export class DeleteDashboardModalComponent implements OnInit {
 
   @Input() dashboardId!:string;
   @Output() deleteDashboardEvent = new EventEmitter<string>();
+  public isSubmitted:boolean = false;
 
 
   constructor(
@@ -25,10 +26,12 @@ export class DeleteDashboardModalComponent implements OnInit {
   }
 
   open(content:any) {
+    this.isSubmitted = false;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
   deleteDashboard(){
+    this.isSubmitted = true;
 
     this.dashboardService.deleteDashboard(this.dashboardId)
     .subscribe((res)=>{
