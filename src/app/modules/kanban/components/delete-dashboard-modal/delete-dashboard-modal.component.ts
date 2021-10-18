@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-delete-dashboard-modal',
@@ -15,7 +17,8 @@ export class DeleteDashboardModalComponent implements OnInit {
 
   constructor(
     private modalService:NgbModal,
-    private dashboardService:DashboardService
+    private dashboardService:DashboardService,
+    private matSnackBar:MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +34,7 @@ export class DeleteDashboardModalComponent implements OnInit {
     .subscribe((res)=>{
       this.deleteDashboardEvent.emit(this.dashboardId);
       this.modalService.dismissAll();
-
+      this.matSnackBar.open("Dashboard deleted","ok",{duration:1000});
     })
   }
 

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 import { Dashboard } from 'src/app/shared/models/dashboard.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-dashboard-modal',
@@ -14,7 +15,8 @@ export class CreateDashboardModalComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private dashboardService:DashboardService
+    private dashboardService:DashboardService,
+    private snackbar:MatSnackBar
     ) {}
 
   public newDashboard:Partial<Dashboard>={
@@ -35,6 +37,9 @@ export class CreateDashboardModalComponent implements OnInit {
     .subscribe(res=>{
       this.newDashboardEvent.emit(res.result);
       this.modalService.dismissAll();
+      this.snackbar.open("Dashboard created !","Ok",{duration:2000});
     })
   }
+
+
 }

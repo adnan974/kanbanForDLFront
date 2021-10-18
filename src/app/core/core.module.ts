@@ -9,6 +9,8 @@ import { ColumnService } from './services/column.service';
 import { DashboardService } from './services/dashboard.service';
 import { AutofocusDirective } from '../shared/directives/autof-focus-directive.directive';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -17,7 +19,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule,
+    NgbModule
     
   ],
   providers:[
