@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  BASE_URL:"https://kanban-dl-front.herokuapp.com"
 };
