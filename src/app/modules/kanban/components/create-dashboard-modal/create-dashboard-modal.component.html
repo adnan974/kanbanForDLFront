@@ -20,7 +20,12 @@
           [(ngModel)]="newDashboard.description"></textarea>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-dark">Save</button>
+        <button [disabled]="isSubmitted" type="submit" class="btn btn-outline-dark ">
+          <div class="button-content">
+            <span>Save</span>
+            <mat-spinner *ngIf="isSubmitted" [diameter]="20"></mat-spinner>
+          </div>
+        </button>
       </div>
     </form>
   </div>

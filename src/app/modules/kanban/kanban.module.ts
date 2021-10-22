@@ -12,6 +12,9 @@ import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateDashboardModalComponent } from './components/create-dashboard-modal/create-dashboard-modal.component';
 import { DeleteDashboardModalComponent } from './components/delete-dashboard-modal/delete-dashboard-modal.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { DeleteDashboardModalComponent } from './components/delete-dashboard-mod
     ComponentsModule,
     CoreModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
+    
+    
     ]
 })
 

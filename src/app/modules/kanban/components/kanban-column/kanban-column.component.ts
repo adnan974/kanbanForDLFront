@@ -31,8 +31,11 @@ export class KanbanColumnComponent implements OnInit {
 
       const ticketsId = event.container.data.map(ticket => ticket._id);
       const columnId = event.container.data[0].associatedColumn;
-      console.log(ticketsId, 'columnId');
-      this.columnService.updateColumnList(columnId, ticketsId).subscribe(res => {
+      // console.log(event.container);
+      const newColumn = { ...this.column };
+      newColumn.ticketList = ticketsId;
+      console.log(newColumn);
+      this.columnService.updateColumnList(columnId, this.column).subscribe(res => {
         console.log(res);
       });
       // const columnList = this.columnService.columnList.map(ticket => ticket.columnProperties);
@@ -48,7 +51,7 @@ export class KanbanColumnComponent implements OnInit {
     }
   }
 
-  changeTitleState(state:boolean,id:string){
+  changeTitleState(state:boolean, id:string){
    this.column.columnProperties.isTitleEditable = state;
   }
 

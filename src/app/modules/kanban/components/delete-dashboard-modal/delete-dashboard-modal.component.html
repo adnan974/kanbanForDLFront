@@ -12,7 +12,14 @@
           Deleting this dashboard will delete all tickets and columns of this dashboard.
         </p>
       </div>
-      <button type="button" class="btn btn-outline-danger" (click)="deleteDashboard()">I understand and I valid my choice</button>
+      <button type="button" [disabled]="isSubmitted" class="btn btn-outline-danger" (click)="deleteDashboard()">
+        <div class="button-content">
+          <span> I understand and I valid my choice</span>
+          <mat-spinner *ngIf="isSubmitted" [diameter]="20"></mat-spinner>
+        </div>
+       
+
+      </button>
 
     </div>
   

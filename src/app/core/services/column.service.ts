@@ -32,8 +32,8 @@ export class ColumnService {
     return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }
   
-  public updateColumnList(columnId: string, ticketList: any[]): Observable<any> {
-    return this.http.patch(`${environment.BASE_URL}/columns/${columnId}`, ticketList)
+  public updateColumnList(columnId: string, column: any[]): Observable<any> {
+    return this.http.patch(`${environment.BASE_URL}/columns/${columnId}`, column)
   } 
 
   public sortTickets(columnList: any[], ticketList: any[]) {

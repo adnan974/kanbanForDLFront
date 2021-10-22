@@ -18,6 +18,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
 import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-dashboard-modal.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-d
     ReactiveFormsModule,
     MatBadgeModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
     
     ],
   exports: [
@@ -50,7 +52,8 @@ import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-d
     NavbarComponent,
     KanbanColumnComponent,
     DashboardComponent,
-    FormsModule,
+    FormsModule
+
     
   ],
 })
