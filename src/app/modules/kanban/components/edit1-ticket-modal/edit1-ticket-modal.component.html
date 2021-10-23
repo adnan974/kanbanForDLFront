@@ -9,14 +9,18 @@
     <div class="modal-body">
       <form >
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title" >
+          <label for="title" >Title</label>
+          <input [(ngModel)]="updatedTicket.title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title" name="title" [value]="ticketData.title">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Description</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+          <textarea  [(ngModel)]="updatedTicket.description" class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [value]="ticketData.description" ></textarea>
         </div>
       </form>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')">Update</button>
+      </div>
     </div>
 
   

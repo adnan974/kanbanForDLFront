@@ -39,4 +39,8 @@ export class TicketService {
       this.ticketList[i].tickets = columnTickets;
     }
   }
+
+  updateTicket(ticketId:string,ticketData:Partial<TicketModel>){
+    return this.http.patch(`${environment.BASE_URL}/tickets/${ticketId}`,ticketData)
+  }
 }
