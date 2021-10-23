@@ -11,6 +11,7 @@ import { AutofocusDirective } from '../shared/directives/autof-focus-directive.d
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -19,7 +20,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule
     
   ],
   providers:[
@@ -29,6 +31,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ColumnService,
     DashboardService
   ],
-  exports:[NgbModule,AutofocusDirective]
+  exports:[NgbModule,AutofocusDirective,MatProgressSpinnerModule]
 })
 export class CoreModule { }

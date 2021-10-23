@@ -1,0 +1,31 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Manage Ticket</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form >
+        <div class="form-group">
+          <label for="title" >Title</label>
+          <input [(ngModel)]="updatedTicket.title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title" name="title" [value]="ticketData.title">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Description</label>
+          <textarea  [(ngModel)]="updatedTicket.description" class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [value]="ticketData.description" ></textarea>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')">Update</button>
+      </div>
+    </div>
+
+  
+  </ng-template>
+  
+  <button type="button" class="btn " data-toggle="modal" (click)="openModal(content)" >
+    <mat-icon>more_hori</mat-icon>
+  </button>

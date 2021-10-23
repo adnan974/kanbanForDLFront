@@ -29,17 +29,13 @@ export class KanbanColumnComponent implements OnInit {
         event.currentIndex
       );
 
-      const ticketsId = event.container.data.map(ticket => ticket._id);
+      const ticketList = [...event.container.data];
       const columnId = event.container.data[0].associatedColumn;
-      // console.log(event.container);
       const newColumn = { ...this.column };
-      newColumn.ticketList = ticketsId;
-      console.log(newColumn);
-      this.columnService.updateColumnList(columnId, this.column).subscribe(res => {
+      newColumn.ticketList = ticketList;
+      this.columnService.updateColumn(columnId, newColumn).subscribe(res => {
         console.log(res);
       });
-      // const columnList = this.columnService.columnList.map(ticket => ticket.columnProperties);
-      // console.log(columnList.map(column => column.ticketList));
     } else {
       transferArrayItem(
         event.previousContainer.data,

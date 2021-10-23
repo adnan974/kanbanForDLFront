@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { CreateDashboardModalComponent } from './create-dashboard-modal/create-dashboard-modal.component';
 import { DeleteDashboardModalComponent } from './delete-dashboard-modal/delete-dashboard-modal.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Edit1TicketModalComponent } from './edit1-ticket-modal/edit1-ticket-modal.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EditTicketModalComponent,
     ManageColumnModalComponent,
     NotificationComponent,
+    Edit1TicketModalComponent,
   ],
   imports: [
     CommonModule,

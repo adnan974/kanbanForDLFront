@@ -25,7 +25,13 @@
                 <div>
                     <a [routerLink]="['/auth/register']">create an account</a>
                 </div>
-                <button  type="submit" class="btn btn-primary">Log in</button>
+                <button  [disabled]="isSubmitted" type="submit" class="btn btn-primary">
+                    <div class="submit-button-content">
+                        <span>Log in</span> 
+                        <mat-spinner  *ngIf="isSubmitted" [diameter]="20"></mat-spinner>
+                    </div>
+                   
+                </button>
             </form>
         </div>
     </div>
