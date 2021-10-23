@@ -33,8 +33,6 @@ export class EditTicketModalComponent implements OnInit {
       this.editTicketForm.title = this.ticketData.title;
       this.editTicketForm.description = this.ticketData.description;
     }
-
-    console.log(this.ticketData);
   }
 
   public openModal(content: any) {
@@ -57,13 +55,12 @@ export class EditTicketModalComponent implements OnInit {
     )
 
     if (this.iconType === 'add') {
-      console.log('add')
       this.ticketService.createTicket(ticketModel).subscribe(
         (ticket) => {
           this.columnService.addTicket(ticket.result);
         }, (err) => console.log('error encore', err)
       );
-    } else {console.log('edit')
+    } else {
       this.ticketService.updateTicket(this.ticketData._id, ticketModel).subscribe(
         success => console.log(success)
       );

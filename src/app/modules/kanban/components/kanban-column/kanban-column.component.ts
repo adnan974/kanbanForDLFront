@@ -8,7 +8,7 @@ import { ColumnService } from 'src/app/core/services/column.service';
   templateUrl: './kanban-column.component.html',
   styleUrls: ['./kanban-column.component.scss']
 })
-export class KanbanColumnComponent implements OnInit {
+export class KanbanColumnComponent {
 
   @Input() column: any = {};
   @Input() ticketsData!: TicketModel[];
@@ -16,10 +16,6 @@ export class KanbanColumnComponent implements OnInit {
   constructor(
     private columnService: ColumnService
   ) {}
-
-  ngOnInit(): void {
-    console.log(this.column);
-  }
 
   onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -34,7 +30,6 @@ export class KanbanColumnComponent implements OnInit {
       const newColumn = { ...this.column };
       newColumn.ticketList = ticketList;
       this.columnService.updateColumn(columnId, newColumn).subscribe(res => {
-        console.log(res);
       });
     } else {
       transferArrayItem(
@@ -43,7 +38,6 @@ export class KanbanColumnComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      console.log('Transfert Item', event);
     }
   }
 

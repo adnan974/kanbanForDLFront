@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ColumnService } from 'src/app/core/services/column.service';
 import { TicketService } from 'src/app/core/services/ticket.service';
-import { TicketModel } from 'src/app/shared/models/ticket.model';
 
 @Component({
   selector: 'app-edit1-ticket-modal',
@@ -10,15 +10,18 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 export class Edit1TicketModalComponent implements OnInit {
 
-  @Input() ticketData!: TicketModel;
+  @Input() ticketData!: any;
 
   public updatedTicket!: any;
-
+  public isDeletable: boolean;
 
   constructor(
     private modalService: NgbModal,
-    private ticketService: TicketService
-  ) { }
+    private ticketService: TicketService,
+    private columnService: ColumnService
+  ) {
+    this.isDeletable = false;
+  }
 
   ngOnInit(): void {
     this.updatedTicket = {
@@ -39,6 +42,18 @@ export class Edit1TicketModalComponent implements OnInit {
      
     })
   }
+
+  deleteFromList() {
+    for (const column of this.columnService.columnList) {
+      if (column.columnProperties._id === this.ticketData.associatedColumn) {
+        column.ticketList = column.ticketList.filter((ticket: any) => ticket._id !== this.ticketData._id)
+      }
+    }
+  }
     
-  
+  onDelete() {
+    this.ticketService.deleteTicket(this.ticketData._id).subscribe(
+      (state) => this.deleteFromList()
+    )
+  }
 }

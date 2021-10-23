@@ -16,9 +16,15 @@
           <label for="exampleInputPassword1">Description</label>
           <textarea  [(ngModel)]="updatedTicket.description" class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [value]="ticketData.description" ></textarea>
         </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="this.isDeletable" type="checkbox" class="form-check-input" id="exampleCheck1" name="isDeletable">
+          <label class="form-check-label" for="exampleCheck1">Check this box to delete your ticket</label>
+        </div>
       </form>
 
       <div class="modal-footer">
+        <button type="button" class="btn btn-danger" [disabled]="!this.isDeletable" (click)="onDelete(); modal.close()">Delete</button>
         <button type="button" class="btn btn-outline-primary" (click)="onSubmit(); modal.close('Save click')">Update</button>
       </div>
     </div>

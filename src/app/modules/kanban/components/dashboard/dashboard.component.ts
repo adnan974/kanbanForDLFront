@@ -21,10 +21,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("dashboard on init")
     this.dashboardService.getDashboardById().subscribe(_ => {
       this.columnService.getColumn().subscribe(_columnList => {
-        console.log(_columnList)
         this.ticketService.getUserTickets().subscribe(data => {
           this.ticketService.ticketList = data;
           this.columnService.sortTickets(_columnList.result, data.tickets);

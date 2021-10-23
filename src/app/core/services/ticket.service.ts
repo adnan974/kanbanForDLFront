@@ -32,10 +32,6 @@ export class TicketService {
     return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`, ticket)
   }
 
-  updateTicket(ticket: TicketModel, ticketId: string): Observable<any> {
-    return this.http.patch(`${environment.BASE_URL}/tickets/${ticketId}`, ticket);
-  }
-
   initTicketList(allTickets: any[]): void {
     this.ticketList = this.dashboard.map(columnName => ({ name: columnName, tickets: [] }))
     for (let i = 0; i < this.ticketList.length; i++) {
@@ -46,5 +42,9 @@ export class TicketService {
 
   updateTicket(ticketId:string,ticketData:Partial<TicketModel>){
     return this.http.patch(`${environment.BASE_URL}/tickets/${ticketId}`,ticketData)
+  }
+
+  deleteTicket(ticketId: string): Observable<any> {
+    return this.http.delete(`${environment.BASE_URL}/tickets/${ticketId}`);
   }
 }
