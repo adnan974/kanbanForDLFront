@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit{
 
   public emailValue: string="test2@test.com";
   public passwordValue: string="test";
-
+  public isSubmitted:boolean= false;
   public formIsInvalidAfterSubmit = false
 
   constructor(
@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit(formData: any) {
+    this.isSubmitted = true
+
     if (formData.form.valid) {
 
       this.formIsInvalidAfterSubmit = false;
@@ -47,9 +49,13 @@ export class LoginComponent implements OnInit{
 
         }, error => {
           this.formIsInvalidAfterSubmit = true;
+          this.isSubmitted = false
+
         })
     } else {
       this.formIsInvalidAfterSubmit = true;
+      this.isSubmitted = false
+
     }
 
   }

@@ -6,6 +6,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from 'src/app/core/core.module';
+import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -20,7 +21,8 @@ import { CoreModule } from 'src/app/core/core.module';
     AuthRoutingModule,
     RouterModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    
   ],
 })
 export class AuthModule { }

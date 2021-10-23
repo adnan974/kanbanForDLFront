@@ -1,19 +1,19 @@
 <div class="ticket_status">
-  New
+  Ticket
 </div>
 
 <div class='header'>
   <h3>{{ticketData.title}}</h3>
-  <app-edit-ticket-modal [columnId]="ticketData.associatedColumn" [ticketData]="ticketData" [iconType]="'edit'"></app-edit-ticket-modal>
+  <app-edit1-ticket-modal [ticketData]="ticketData"></app-edit1-ticket-modal>
 </div>
 
 <div class="description">
   {{ticketData.description}}
 </div>
 
-<div class="label_list">
+<!-- <div class="label_list">
   TODO
-</div>
+</div> -->
 
 <div class="ticket_number">
   {{ticketData.ticketNumber}}
