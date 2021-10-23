@@ -17,11 +17,10 @@ export class EditTicketModalComponent implements OnInit {
   @Input() iconType: 'add' | 'edit' = 'add';
   @Input() ticketData: any = 'default';
   
-  public editTicketForm: FormGroup = new FormGroup({
-    title: new FormControl(this.ticketData.title),
-    description: new FormControl(this.ticketData.description),
-    labels: new FormControl()
-  });
+  public editTicketForm = {
+    title: "",
+    description: "",
+  };
   
   constructor(
     private modalService: NgbModal,
@@ -31,12 +30,12 @@ export class EditTicketModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-  //   this.editTicketForm = this.fb.group({
-  //     name: ["test", [Validators.required, Validators.maxLength(30)]],
-  //     address: this.fb.group({
-  //         pin: ["123456", Validators.required]
-  //     })
-  // });>
+    if (this.ticketData !== null) {
+      this.editTicketForm.title = this.ticketData.title;
+      this.editTicketForm.description = this.ticketData.description;
+    }
+
+    console.log(this.ticketData);
   }
 
   public openModal(content: any) {
@@ -49,20 +48,26 @@ export class EditTicketModalComponent implements OnInit {
 
   public onSubmit(): void {
     const ticketModel: TicketModel = new TicketModel(
-      this.editTicketForm.get('title')?.value,
+      this.editTicketForm.title,
       this.getTicketNumber(),
       "To Do",
       this.dashboardService.activeDashboardId || '',
       this.columnId,
-      this.editTicketForm.get('description')?.value,
+      this.editTicketForm.description,
       []
     )
 
-
-    this.ticketService.createTicket(ticketModel).subscribe(
-      (ticket) => {
-        this.columnService.addTicket(ticket.result);
-      }, (err) => console.log('error encore', err)
-    );
+    if (this.iconType === 'add') {
+      console.log('add')
+      this.ticketService.createTicket(ticketModel).subscribe(
+        (ticket) => {
+          this.columnService.addTicket(ticket.result);
+        }, (err) => console.log('error encore', err)
+      );
+    } else {console.log('edit')
+      this.ticketService.updateTicket(ticketModel, this.ticketData._id).subscribe(
+        success => console.log(success)
+      );
+    }
   }
 }
