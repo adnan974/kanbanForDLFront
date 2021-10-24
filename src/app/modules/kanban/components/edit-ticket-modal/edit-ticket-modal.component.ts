@@ -13,7 +13,6 @@ import { ColumnService } from 'src/app/core/services/column.service';
 
 export class EditTicketModalComponent implements OnInit {
   @Input() columnId: string = '';
-  @Input() iconType: 'add' | 'edit' = 'add';
   @Input() ticketData: any = 'default';
   
   public editTicketForm = {
@@ -54,16 +53,10 @@ export class EditTicketModalComponent implements OnInit {
       []
     )
 
-    if (this.iconType === 'add') {
-      this.ticketService.createTicket(ticketModel).subscribe(
-        (ticket) => {
-          this.columnService.addTicket(ticket.result);
-        }, (err) => console.log('error encore', err)
-      );
-    } else {
-      this.ticketService.updateTicket(this.ticketData._id, ticketModel).subscribe(
-        success => console.log(success)
-      );
-    }
+    this.ticketService.createTicket(ticketModel).subscribe(
+      (ticket) => {
+        // this.columnService.addTicket(ticket.result);
+      }, (err) => console.log('error encore', err)
+    );
   }
 }

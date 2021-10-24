@@ -42,14 +42,14 @@ export class KanbanColumnComponent {
   }
 
   changeTitleState(state:boolean, id:string){
-   this.column.columnProperties.isTitleEditable = state;
+   this.column.isTitleEditable = state;
   }
 
   updateTitle(id:string,title:string){
 
     this.columnService.updateColumn(id,{title:title})
     .subscribe(res => {
-      this.column.columnProperties.title = title;
+      this.column.title = title;
     });
   }
 

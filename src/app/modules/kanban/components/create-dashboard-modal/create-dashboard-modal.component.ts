@@ -2,32 +2,34 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 import { Dashboard } from 'src/app/shared/models/dashboard.model';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ColumnService } from 'src/app/core/services/column.service';
 
 @Component({
   selector: 'app-create-dashboard-modal',
   templateUrl: './create-dashboard-modal.component.html',
   styleUrls: ['./create-dashboard-modal.component.scss']
 })
-export class CreateDashboardModalComponent implements OnInit {
+export class CreateDashboardModalComponent {
 
   @Output() newDashboardEvent = new EventEmitter<Partial<Dashboard>>();
+  
   public isSubmitted:boolean = false;
+  private defaultColumns: any[] = [
+
+  ];
 
   constructor(
     private modalService: NgbModal,
-    private dashboardService:DashboardService,
-    private snackbar:MatSnackBar
-    ) {}
+    private dashboardService: DashboardService,
+    private snackbar: MatSnackBar,
+    private columnService: ColumnService
+  ) {}
 
   public newDashboard:Partial<Dashboard>={
     title:"",
     description:""
   };
-
-  ngOnInit(){
-
-  }
 
   open(content:any) {
     this.isSubmitted = false;
@@ -44,6 +46,8 @@ export class CreateDashboardModalComponent implements OnInit {
       this.snackbar.open("Dashboard created !","Ok",{duration:2000});
       this.modalService.dismissAll();
 
+      // Create default column
+      this.defaultColumns.map(column => this.columnService.postColumn(column));
     })
   }
 

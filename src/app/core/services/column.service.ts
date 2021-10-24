@@ -3,13 +3,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment"
 import { DashboardService } from './dashboard.service';
+import { Ticket } from './ticket.service';
+
+
+export interface Column {
+  title: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+  associatedDashboard: string;
+  ticketList: [];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ColumnService {
-  public columnList: any[] = [];
+  public columnList: Column[] = [];
 
   constructor(
     private http: HttpClient,
@@ -32,15 +43,11 @@ export class ColumnService {
     return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }
 
-  public sortTickets(columnList: any[], ticketList: any[]) {
-    this.columnList = columnList.map(column => ({ columnProperties: column, ticketList: ticketList.filter(ticket => ticket.associatedColumn === column._id) }));
-  }
-
-  public addTicket(ticket: any) {
-    for (let i = 0; i < this.columnList.length; i++) {
-      if (ticket.associatedColumn ===  this.columnList[i].columnProperties._id) {
-        this.columnList[i].ticketList.push(ticket);
-      }
-    }
-  }
+  // public addTicket(ticket: Ticket) {
+  //   for (let i = 0; i < this.columnList.length; i++) {
+  //     if (ticket.associatedColumn ===  this.columnList[i]._id) {
+  //       this.columnList[i].ticketList.push(ticket);
+  //     }
+  //   }
+  // }
 }

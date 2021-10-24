@@ -23,13 +23,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.dashboardService.getDashboardById().subscribe(_ => {
       this.columnService.getColumn().subscribe(_columnList => {
+        this.columnService.columnList = _columnList.result;
         this.ticketService.getUserTickets().subscribe(data => {
           this.ticketService.ticketList = data;
-          this.columnService.sortTickets(_columnList.result, data.tickets);
-          // TODO: A Ranger
-          this.columnService.columnList.forEach((element)=>{
-            element.columnProperties.isEditable = false;
-          })
+          console.log(data);
+          // this.columnService.columnList.forEach((element)=>{
+          //   element.columnProperties.isEditable = false;
+          // })
 
 
         });

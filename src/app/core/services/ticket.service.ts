@@ -6,12 +6,19 @@ import { UserStoreService } from './userStore.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { DashboardService } from './dashboard.service';
 
+export interface Ticket {
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  associatedColumn: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class TicketService {
-  public dashboard: string[] = ['To Do', 'In progress', 'essai:1', 'essai:2']; // A récupérer depuis le back
   public ticketList: { name: string, tickets: any[] }[] = [];
 
   constructor(
@@ -32,13 +39,13 @@ export class TicketService {
     return this.http.post(`${environment.BASE_URL}/users/${this.userStoreService.userInfos.id}/tickets`, ticket)
   }
 
-  initTicketList(allTickets: any[]): void {
-    this.ticketList = this.dashboard.map(columnName => ({ name: columnName, tickets: [] }))
-    for (let i = 0; i < this.ticketList.length; i++) {
-      const columnTickets = allTickets.filter(ticket => ticket.ticketStatus === this.ticketList[i])
-      this.ticketList[i].tickets = columnTickets;
-    }
-  }
+  // initTicketList(allTickets: any[]): void {
+  //   this.ticketList = this.dashboard.map(columnName => ({ name: columnName, tickets: [] }))
+  //   for (let i = 0; i < this.ticketList.length; i++) {
+  //     const columnTickets = allTickets.filter(ticket => ticket.ticketStatus === this.ticketList[i])
+  //     this.ticketList[i].tickets = columnTickets;
+  //   }
+  // }
 
   updateTicket(ticketId:string,ticketData:Partial<TicketModel>){
     return this.http.patch(`${environment.BASE_URL}/tickets/${ticketId}`,ticketData)
