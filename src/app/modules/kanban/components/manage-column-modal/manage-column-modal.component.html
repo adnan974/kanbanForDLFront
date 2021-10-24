@@ -30,7 +30,7 @@
         <label for="title">Delete a column</label>
         <select [(ngModel)]="deleteColumnFormData.selectedItem" name="title" multiple class="form-control">
           <option *ngFor="let column of this.columnService.columnList; let i = index"
-            [value]="column._id">{{ column.title}}</option>
+            [value]="column._id">{{ column.title }}</option>
         </select>
       </div>
 

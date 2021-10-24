@@ -7,14 +7,13 @@
       (click)="changeTitleState(true,column._id)" 
       (focusout)="changeTitleState(false,column._id)"
       (change)="updateTitle(column._id,titleInput.value)"
-
       />
     <mat-icon [class.d-none]="column.isTitleEditable">edit</mat-icon>
   </div>
   <app-edit-ticket-modal [columnId]="column._id"></app-edit-ticket-modal>
 </div>
 
-<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="ticketList"
+<div class="drop_list personnalised_scrollbar drop-zone" cdkDropList [cdkDropListData]="ticketList"
   (cdkDropListDropped)="onDrop($event)">
   <div class="drop_item" cdkDrag *ngFor="let ticket of ticketList">
     <app-ticket [ticketData]="ticket"></app-ticket>

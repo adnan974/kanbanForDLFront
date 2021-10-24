@@ -15,9 +15,6 @@ export class CreateDashboardModalComponent {
   @Output() newDashboardEvent = new EventEmitter<Partial<Dashboard>>();
   
   public isSubmitted:boolean = false;
-  private defaultColumns: any[] = [
-
-  ];
 
   constructor(
     private modalService: NgbModal,
@@ -45,9 +42,6 @@ export class CreateDashboardModalComponent {
       this.newDashboardEvent.emit(res.result);
       this.snackbar.open("Dashboard created !","Ok",{duration:2000});
       this.modalService.dismissAll();
-
-      // Create default column
-      this.defaultColumns.map(column => this.columnService.postColumn(column));
     })
   }
 

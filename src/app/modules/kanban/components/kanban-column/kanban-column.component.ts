@@ -42,11 +42,14 @@ export class KanbanColumnComponent implements OnInit, OnChanges {
         (_ticket: Ticket) => _ticket._id === ticketId
       );
 
-
-      if (ticket) _ticketList.push(ticket);
+      if (ticket) {
+        _ticketList.push(ticket);
+      } else {
+        _ticketList.push();
+      }
     }
 
-    this.ticketList = _ticketList; 
+    this.ticketList = _ticketList;
   }
 
   onDrop(event: CdkDragDrop<any[]>) {
@@ -57,12 +60,14 @@ export class KanbanColumnComponent implements OnInit, OnChanges {
         event.currentIndex
       );
 
-      // const ticketList = [...event.container.data];
-      // const columnId = event.container.data[0].associatedColumn;
-      // const newColumn = { ...this.column };
-      // newColumn.ticketList = ticketList;
-      // this.columnService.updateColumn(columnId, newColumn).subscribe(res => {
-      // });
+      const newTicketList: Ticket[] = event.container.data;
+      const ticketListId: string[] = newTicketList.map(ticket => ticket._id);
+      const column: Column = this.columnService.columnList.filter(
+          (column) => column._id === newTicketList[0].associatedColumn
+      )[0];
+
+      column.ticketList = ticketListId;      
+      this.columnService.updateColumn(newTicketList[0].associatedColumn, column).subscribe();
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -70,6 +75,26 @@ export class KanbanColumnComponent implements OnInit, OnChanges {
         event.previousIndex,
         event.currentIndex
       );
+
+      const newTicketListOne: Ticket[] = event.previousContainer.data;
+      const ticketListIdOne: string[] = newTicketListOne.map(ticket => ticket._id);
+      const columnOne: Column = this.columnService.columnList.filter(
+          (column) => column._id === newTicketListOne[0].associatedColumn
+      )[0];
+
+      const newTicketListTwo: Ticket[] = event.container.data;
+      const ticketListIdTwo: string[] = newTicketListTwo.map(ticket => ticket._id);
+      const columnTwo: Column = this.columnService.columnList.filter(
+          (column) => column._id === newTicketListTwo[0].associatedColumn
+      )[0];
+
+      columnOne.ticketList = ticketListIdOne;
+      columnTwo.ticketList = ticketListIdTwo;
+      
+console.log(columnOne, columnTwo);
+
+      this.columnService.updateColumn(newTicketListOne[0].associatedColumn, columnOne).subscribe();
+      this.columnService.updateColumn(newTicketListTwo[0].associatedColumn, columnTwo).subscribe();
     }
   }
 
