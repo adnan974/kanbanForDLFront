@@ -38,8 +38,8 @@ export class EditTicketModalComponent implements OnInit {
     this.modalService.open(content)
   }
 
-  getTicketNumber(): number {
-    return 1;
+  private getTicketNumber(): number {
+    return this.ticketService.ticketList.length + 1;
   }
 
   public onSubmit(): void {

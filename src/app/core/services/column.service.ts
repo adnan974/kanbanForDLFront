@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment"
 import { DashboardService } from './dashboard.service';
 import { Ticket } from './ticket.service';
-
+import * as _ from 'lodash';
 
 export interface Column {
   title: string;
@@ -32,8 +32,8 @@ export class ColumnService {
     return this.http.get(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`)
   }
 
-  public postColumn(newColumn: any): Observable<any>{
-    return this.http.post(`${environment.BASE_URL}/dashboards/${this.dashboardService.activeDashboardId}/columns`, newColumn)
+  public postColumn(newColumn: any, dashboardId?: string): Observable<any>{
+    return this.http.post(`${environment.BASE_URL}/dashboards/${_.isEmpty(dashboardId) ? this.dashboardService.activeDashboardId : dashboardId}/columns`, newColumn)
   }
 
   public updateColumn(columnId: any, updatedColumn: any): Observable<any>{

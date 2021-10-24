@@ -15,6 +15,9 @@ export class CreateDashboardModalComponent {
   @Output() newDashboardEvent = new EventEmitter<Partial<Dashboard>>();
   
   public isSubmitted:boolean = false;
+  private defaultColumns: any[] = [
+    "To do", "In progress", "Closed"
+  ];
 
   constructor(
     private modalService: NgbModal,
@@ -39,9 +42,12 @@ export class CreateDashboardModalComponent {
     this.isSubmitted = true;
     this.dashboardService.createDashboard(this.newDashboard)
     .subscribe(res=>{
+      console.log(res.result._id);
       this.newDashboardEvent.emit(res.result);
       this.snackbar.open("Dashboard created !","Ok",{duration:2000});
       this.modalService.dismissAll();
+
+      this.defaultColumns.map(column => this.columnService.postColumn({ title: column }, res.result._id).subscribe());
     })
   }
 
