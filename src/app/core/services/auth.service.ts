@@ -9,13 +9,15 @@ import { environment } from "./../../../environments/environment"
 
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  login(loginData: any): Observable<any>{
+  public login(loginData: any): Observable<any>{
     return this.http.post(`${environment.BASE_URL}/signin`, loginData)
   }
 
-  register(registerData: any): Observable<any>{
+  public register(registerData: any): Observable<any>{
     return this.http.post(`${environment.BASE_URL}/signup`, registerData)
   }
 }

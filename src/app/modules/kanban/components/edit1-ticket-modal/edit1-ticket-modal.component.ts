@@ -42,18 +42,14 @@ export class Edit1TicketModalComponent implements OnInit {
      
     })
   }
-
-  deleteFromList() {
-    // for (const column of this.columnService.columnList) {
-    //   if (column._id === this.ticketData.associatedColumn) {
-    //     column.ticketList = column.ticketList.filter((ticket: any) => ticket._id !== this.ticketData._id)
-    //   }
-    // }
-  }
     
   onDelete() {
     this.ticketService.deleteTicket(this.ticketData._id).subscribe(
-      (state) => this.deleteFromList()
+      (state) => {
+        if (state.success) {
+          this.ticketService.ticketList = this.ticketService.ticketList.filter(ticket => ticket._id !== this.ticketData._id);
+        }
+      }
     )
   }
 }

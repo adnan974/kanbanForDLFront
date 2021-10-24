@@ -1,39 +1,52 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Column, ColumnService } from 'src/app/core/services/column.service';
-import { Ticket, TicketService } from 'src/app/core/services/ticket.service';
+import { Ticket } from 'src/app/core/services/ticket.service';
 
 @Component({
   selector: 'app-kanban-column',
   templateUrl: './kanban-column.component.html',
   styleUrls: ['./kanban-column.component.scss']
 })
-export class KanbanColumnComponent implements OnInit {
+export class KanbanColumnComponent implements OnInit, OnChanges {
   @Input() column!: Column;
-  public ticketList: Array<Ticket> = [];
+  @Input() allTickets: Ticket[];
+  
+  public ticketList: Array<Ticket>;
 
   constructor(
     private columnService: ColumnService,
-    private ticketService: TicketService
   ) {
-    // this.ticketList = [];
+    this.ticketList = [];
+    this.allTickets = []
   }
 
   ngOnInit() {
-    console.log('ticketList', this.ticketService.ticketList);
     const _ticketList: Ticket[] = [];
     for (const ticketId of this.column.ticketList) {
-      const ticket: Ticket | undefined = this.ticketService.ticketList.find(
+      const ticket: Ticket | undefined = this.allTickets.find(
         (_ticket: Ticket) => _ticket._id === ticketId
       );
-
-      console.log('ticket', ticket);
 
       if (ticket) _ticketList.push(ticket);
     }
 
     this.ticketList = _ticketList; 
-    console.log(_ticketList, 'column');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    const _ticketList: Ticket[] = [];
+    for (const ticketId of this.column.ticketList) {
+      const ticket: Ticket | undefined = this.allTickets.find(
+        (_ticket: Ticket) => _ticket._id === ticketId
+      );
+
+
+      if (ticket) _ticketList.push(ticket);
+    }
+
+    this.ticketList = _ticketList; 
   }
 
   onDrop(event: CdkDragDrop<any[]>) {

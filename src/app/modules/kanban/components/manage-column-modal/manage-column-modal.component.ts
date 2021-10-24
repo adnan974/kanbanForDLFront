@@ -38,7 +38,6 @@ export class ManageColumnModalComponent {
 
   public addColumn() {
     this.columnService.postColumn(this.newColumn).subscribe((res) => {
-      console.log(res);
       this.columnService.columnList.push(res.result);
     });
   }
@@ -46,14 +45,10 @@ export class ManageColumnModalComponent {
   public _deleteColumn() {
 
     let columnId: string = this.deleteColumnFormData.selectedItem[0];
-    console.log(columnId);
     this.columnService.deleteColumn(columnId).subscribe((res) => {
-      console.log(res);
       this.columnService.columnList = this.columnService.columnList.filter((element) => {
         return element._id != columnId;
       });
-      console.log(this.columnService.columnList)
-
     });
 
 

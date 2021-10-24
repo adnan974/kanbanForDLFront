@@ -56,6 +56,7 @@ export class EditTicketModalComponent implements OnInit {
     this.ticketService.createTicket(ticketModel).subscribe(
       (ticket) => {
         this.columnService.addTicket(ticket.result);
+        this.ticketService.ticketList = [...this.ticketService.ticketList, ticket.result];
       }, (err) => console.log('error encore', err)
     );
   }

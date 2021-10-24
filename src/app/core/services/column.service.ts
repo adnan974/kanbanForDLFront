@@ -47,10 +47,8 @@ export class ColumnService {
   public addTicket(ticket: Ticket) {
     for (const column of this.columnList) {
       if (ticket.associatedColumn ===  column._id) {
-        console.log(column.ticketList);
         // Update client
         column.ticketList.push(ticket._id);
-        console.log(column.ticketList);
 
         // Update server
         this.updateColumn(column._id, column).subscribe(res => console.log(res));
