@@ -14,9 +14,9 @@
   <app-edit-ticket-modal [columnId]="column._id"></app-edit-ticket-modal>
 </div>
 
-<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="column.ticketList"
+<div class="drop_list personnalised_scrollbar" cdkDropList [cdkDropListData]="ticketList"
   (cdkDropListDropped)="onDrop($event)">
-  <div class="drop_item" cdkDrag *ngFor="let ticket of column.ticketList">
+  <div class="drop_item" cdkDrag *ngFor="let ticket of ticketList">
     <app-ticket [ticketData]="ticket"></app-ticket>
   </div>
 </div>

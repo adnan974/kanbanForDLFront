@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Ticket } from 'src/app/core/services/ticket.service';
 import { TicketModel } from 'src/app/shared/models/ticket.model';
 
 @Component({
@@ -8,11 +9,12 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 })
 export class TicketComponent implements OnInit {
 
-  @Input() ticketData!: TicketModel;
+  @Input() ticketData!: Ticket;
   
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.ticketData);
   }
 
 }

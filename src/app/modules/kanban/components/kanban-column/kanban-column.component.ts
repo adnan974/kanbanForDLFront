@@ -1,21 +1,40 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TicketModel } from 'src/app/shared/models/ticket.model';
-import { ColumnService } from 'src/app/core/services/column.service';
+import { Column, ColumnService } from 'src/app/core/services/column.service';
+import { Ticket, TicketService } from 'src/app/core/services/ticket.service';
 
 @Component({
   selector: 'app-kanban-column',
   templateUrl: './kanban-column.component.html',
   styleUrls: ['./kanban-column.component.scss']
 })
-export class KanbanColumnComponent {
-
-  @Input() column: any = {};
-  @Input() ticketsData!: TicketModel[];
+export class KanbanColumnComponent implements OnInit {
+  @Input() column!: Column;
+  public ticketList: Array<Ticket> = [];
 
   constructor(
-    private columnService: ColumnService
-  ) {}
+    private columnService: ColumnService,
+    private ticketService: TicketService
+  ) {
+    // this.ticketList = [];
+  }
+
+  ngOnInit() {
+    console.log('ticketList', this.ticketService.ticketList);
+    const _ticketList: Ticket[] = [];
+    for (const ticketId of this.column.ticketList) {
+      const ticket: Ticket | undefined = this.ticketService.ticketList.find(
+        (_ticket: Ticket) => _ticket._id === ticketId
+      );
+
+      console.log('ticket', ticket);
+
+      if (ticket) _ticketList.push(ticket);
+    }
+
+    this.ticketList = _ticketList; 
+    console.log(_ticketList, 'column');
+  }
 
   onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -25,12 +44,12 @@ export class KanbanColumnComponent {
         event.currentIndex
       );
 
-      const ticketList = [...event.container.data];
-      const columnId = event.container.data[0].associatedColumn;
-      const newColumn = { ...this.column };
-      newColumn.ticketList = ticketList;
-      this.columnService.updateColumn(columnId, newColumn).subscribe(res => {
-      });
+      // const ticketList = [...event.container.data];
+      // const columnId = event.container.data[0].associatedColumn;
+      // const newColumn = { ...this.column };
+      // newColumn.ticketList = ticketList;
+      // this.columnService.updateColumn(columnId, newColumn).subscribe(res => {
+      // });
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -42,7 +61,7 @@ export class KanbanColumnComponent {
   }
 
   changeTitleState(state:boolean, id:string){
-   this.column.isTitleEditable = state;
+    this.column.isTitleEditable = state;
   }
 
   updateTitle(id:string,title:string){

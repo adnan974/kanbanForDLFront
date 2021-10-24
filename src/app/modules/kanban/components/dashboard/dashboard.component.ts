@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/core/services/ticket.service';
-import * as _ from 'lodash';
-import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { ColumnService } from 'src/app/core/services/column.service';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 
@@ -22,16 +20,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.dashboardService.getDashboardById().subscribe(_ => {
-      this.columnService.getColumn().subscribe(_columnList => {
-        this.columnService.columnList = _columnList.result;
-        this.ticketService.getUserTickets().subscribe(data => {
-          this.ticketService.ticketList = data;
-          console.log(data);
+      this.ticketService.getUserTickets().subscribe(data => {
+        this.ticketService.ticketList = data.tickets;
+        
+        this.columnService.getColumn().subscribe(_columnList => {
+          this.columnService.columnList = _columnList.result;
+          console.log(data.tickets);
           // this.columnService.columnList.forEach((element)=>{
           //   element.columnProperties.isEditable = false;
           // })
-
-
         });
       })
 

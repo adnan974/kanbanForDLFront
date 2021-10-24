@@ -12,7 +12,8 @@ export interface Column {
   createdAt: string;
   updatedAt: string;
   associatedDashboard: string;
-  ticketList: [];
+  ticketList: string[];
+  isTitleEditable?: boolean;
 }
 
 @Injectable({
@@ -43,11 +44,17 @@ export class ColumnService {
     return this.http.delete(`${environment.BASE_URL}/columns/${columnId}`)
   }
 
-  // public addTicket(ticket: Ticket) {
-  //   for (let i = 0; i < this.columnList.length; i++) {
-  //     if (ticket.associatedColumn ===  this.columnList[i]._id) {
-  //       this.columnList[i].ticketList.push(ticket);
-  //     }
-  //   }
-  // }
+  public addTicket(ticket: Ticket) {
+    for (const column of this.columnList) {
+      if (ticket.associatedColumn ===  column._id) {
+        console.log(column.ticketList);
+        // Update client
+        column.ticketList.push(ticket._id);
+        console.log(column.ticketList);
+
+        // Update server
+        this.updateColumn(column._id, column).subscribe(res => console.log(res));
+      }
+    }
+  }
 }

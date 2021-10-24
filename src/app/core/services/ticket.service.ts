@@ -7,11 +7,13 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { DashboardService } from './dashboard.service';
 
 export interface Ticket {
+  _id: string;
   title: string;
   description: string;
   createdAt: string;
   updatedAt: string;
   associatedColumn: string;
+  ticketNumber: number;
 }
 
 @Injectable({
@@ -19,7 +21,7 @@ export interface Ticket {
 })
 
 export class TicketService {
-  public ticketList: { name: string, tickets: any[] }[] = [];
+  public ticketList: Ticket[] = [];
 
   constructor(
     private http: HttpClient,

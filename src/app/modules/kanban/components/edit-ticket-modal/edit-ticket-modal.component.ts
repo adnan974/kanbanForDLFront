@@ -5,6 +5,11 @@ import { TicketModel } from 'src/app/shared/models/ticket.model';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 import { ColumnService } from 'src/app/core/services/column.service';
 
+interface EditTicketForm {
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-edit-ticket-modal',
   templateUrl: './edit-ticket-modal.component.html',
@@ -12,10 +17,9 @@ import { ColumnService } from 'src/app/core/services/column.service';
 })
 
 export class EditTicketModalComponent implements OnInit {
-  @Input() columnId: string = '';
-  @Input() ticketData: any = 'default';
+  @Input() columnId!: string;
   
-  public editTicketForm = {
+  public editTicketForm: EditTicketForm = {
     title: "",
     description: "",
   };
@@ -28,10 +32,6 @@ export class EditTicketModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.ticketData !== null) {
-      this.editTicketForm.title = this.ticketData.title;
-      this.editTicketForm.description = this.ticketData.description;
-    }
   }
 
   public openModal(content: any) {
@@ -55,7 +55,7 @@ export class EditTicketModalComponent implements OnInit {
 
     this.ticketService.createTicket(ticketModel).subscribe(
       (ticket) => {
-        // this.columnService.addTicket(ticket.result);
+        this.columnService.addTicket(ticket.result);
       }, (err) => console.log('error encore', err)
     );
   }
