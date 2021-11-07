@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Column, ColumnService } from 'src/app/core/services/column.service';
-import { Ticket } from 'src/app/core/services/ticket.service';
+import { Ticket, TicketService } from 'src/app/core/services/ticket.service';
 
 @Component({
   selector: 'app-kanban-column',
@@ -16,6 +16,7 @@ export class KanbanColumnComponent implements OnChanges {
 
   constructor(
     private columnService: ColumnService,
+    private ticketService: TicketService
   ) {
     this.ticketList = [];
     this.allTickets = []
@@ -56,35 +57,46 @@ export class KanbanColumnComponent implements OnChanges {
       column.ticketList = ticketListId;      
       this.columnService.updateColumn(newTicketList[0].associatedColumn, column).subscribe();
     } else {
-      copyArrayItem(
+      transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
 
-      const newTicketListOne: Ticket[] = event.previousContainer.data;
-      const newTicketListTwo: Ticket[] = event.container.data;
+      const currentTicket: Ticket = event.container.data[event.currentIndex];
+      const currentColumnIndex: string = this.column._id;
+      const previousColumnIndex: string = currentTicket.associatedColumn;
 
-      console.log(event.item)
-      
-      const ticketListIdOne: string[] = newTicketListOne.map(ticket => ticket._id);
-      const ticketListIdTwo: string[] = newTicketListTwo.map(ticket => ticket._id);
+      const previousTicketListID: string[] = event.previousContainer.data.map(
+        (ticket: Ticket) => ticket._id
+      );
+      const currentTicketListID: string[] = event.container.data.map(
+        (ticket: Ticket) => ticket._id
+      );
 
-//       const columnOne: Column = newTicketListOne.length === 0 ? this.columnService.columnList.filter(
-//           (column) => column._id === newTicketListOne[0].associatedColumn
-//       )[0] : ;
-//       const columnTwo: Column = this.columnService.columnList.filter(
-//           (column) => column._id === newTicketListTwo[0].associatedColumn
-//       )[0];
+      currentTicket.associatedColumn = this.column._id
+      this.ticketService.updateTicket(currentTicket._id, currentTicket).subscribe(
+        () => {
+          for (const _ticket of this.ticketService.ticketList) {
+            if (_ticket._id === currentTicket._id) {
+              _ticket.associatedColumn = this.column._id;
+            }
+          }
+        }
+      );
 
-//       columnOne.ticketList = ticketListIdOne;
-//       columnTwo.ticketList = ticketListIdTwo;
-      
-// console.log(event)
+      for (const _column of this.columnService.columnList) {
+        if (_column._id === currentColumnIndex) {
+          _column.ticketList = currentTicketListID;
+          this.columnService.updateColumn(currentColumnIndex, _column).subscribe();
+        }
 
-//       this.columnService.updateColumn(newTicketListOne[0].associatedColumn, columnOne).subscribe();
-//       this.columnService.updateColumn(newTicketListTwo[0].associatedColumn, columnTwo).subscribe();
+        if (_column._id === previousColumnIndex) {
+          _column.ticketList = previousTicketListID;
+          this.columnService.updateColumn(previousColumnIndex, _column).subscribe();
+        }
+      }
     }
   }
 
