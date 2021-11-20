@@ -4,11 +4,13 @@
 </div>
 
 <div class='items'>
-  <a>
-    <mat-icon  [routerLink]="['/home/dashboards']" class='icon'>dashboard</mat-icon>
+  <a class="menuItem" [routerLink]="['/home/dashboards']">
+    <mat-icon class='icon'>dashboard</mat-icon>
+    <span class="menuTitle">Dashboard</span>
   </a>
-  <a >
-    <mat-icon  [routerLink]="['/home']" class='icon'>settings</mat-icon>
+  <a class="menuItem" [routerLink]="['/home']">
+    <mat-icon class='icon'>settings</mat-icon>
+    <span class="menuTitle">Settings</span>
   </a>
 </div>
 

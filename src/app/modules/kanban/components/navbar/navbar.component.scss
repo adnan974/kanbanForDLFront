@@ -9,6 +9,21 @@
   align-items: center;
   justify-content: space-between;
   color: $emptyShade;
+
+  .menuTitle {
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+:host:hover {
+  width: 150px;
+  flex-shrink: 0;
+  align-items: flex-start;
+
+  .menuTitle {
+    visibility: visible;
+  }
 }
 
 .logo_container {
@@ -28,7 +43,13 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin: 10px 0 10px 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: $emptyShade;
 }
 
 .icon {
@@ -36,8 +57,11 @@
 }
 
 .footer {
-  text-align: center;
-  padding: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
 }
 
 p {
